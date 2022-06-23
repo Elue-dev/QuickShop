@@ -1,0 +1,18 @@
+$mainColor: #bb5353;
+
+@mixin wrapper() {
+    max-width: 1400px;
+    width: 90%;
+    margin: auto;
+}
+
+@mixin flexBox($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin grid($tempCol) {
+    display: grid;
+    grid-template-columns: $tempCol;
+}

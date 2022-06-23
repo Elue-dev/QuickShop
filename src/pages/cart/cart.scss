@@ -1,0 +1,47 @@
+@import '../../globalStyles.scss';
+
+.cart {
+   @include wrapper();
+   .cart_title {
+      font-family: 'Permanent Marker', cursive;
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+   }
+   .cart_empty {
+      text-align: center;
+      font-size: 1.4rem;
+      a {
+         text-decoration: underline
+      }
+    }
+    .cart_item {
+      @include flexBox(space-between, center);
+      padding: 1rem 5rem;
+      .item_image {
+         img {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+         }
+      }
+      .count_input {
+         width: 25px;
+      }
+      .remove_item {
+         background: $mainColor;
+         color: #fff;
+         padding: .2rem .8rem;
+         border-radius: .3rem;
+         border: 0;
+         outline: 0;
+         font-weight: 700;
+         font-size: .8rem;
+         cursor: pointer;
+         .remove_icon {
+            font-size: 1.5rem;
+         }
+      }
+    }
+}
