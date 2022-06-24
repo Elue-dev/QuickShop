@@ -44,7 +44,10 @@ export default function ProductDetails() {
             <div className="details_texts">
                 <p className='detail_name'>{item.name}</p>
                 <p>{item.description}.</p>
-                <p className='detail_price'><span>NGN {item.price}</span> NGN {item.price - 349}</p>
+                <p className='detail_price'>
+                    <span>NGN {item.price}</span>
+                    <span>NGN {item.price - 349}</span>
+                </p>
                 {cart.some(i => i.id === item.id) ? (
                     <button disabled className="btn add_to_cart disabled">Added to cart</button>
                 ) : (
