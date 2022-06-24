@@ -3,7 +3,7 @@
 .cart {
    @include wrapper();
    .cart_title {
-      font-family: 'Permanent Marker', cursive;
+      font-family: $headingFont;
       text-align: center;
       padding-top: 3rem;
       padding-bottom: 2rem;
@@ -16,7 +16,7 @@
       }
     }
     .cart_item {
-      @include flexBox(space-between, center);
+      @include flexBox(space-between, center, row);
       padding: 1rem 5rem;
       .item_image {
          img {
@@ -43,5 +43,59 @@
             font-size: 1.5rem;
          }
       }
+      .view_item {
+         font-size: 2rem;
+         cursor: pointer;
+      }
+    }
+    .clear_cart_row {
+      @include flexBox(space-between, center, row);
+      :first-child {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .clear_cart {
+         background: crimson;
+         color: #fff;
+         padding: .5rem 1.5rem;
+         border-radius: .3rem;
+         border: 0;
+         outline: 0;
+         font-weight: 700;
+         font-size: 1.1rem;
+         cursor: pointer;
+         display: inline-block;
+         margin-top: 1rem;
+         text-align: right;
+       }
+    }
+    .summary {
+      text-align: center;
+      padding-top: 2rem;
+      line-height: 2;
+      .summary_title {
+         font-family: $headingFont;
+         color: $mainColor;
+      }
+      p {
+         font-size: 1.3rem;
+      }
+      .summary_icon {
+         color: $mainColor;
+         margin-right: .5rem;
+      }
+    }
+    .checkout_btn {
+      background: $mainColor;
+      color: #fff;
+      padding: .5rem 1.5rem;
+      border-radius: .3rem;
+      border: 0;
+      outline: 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 1rem;
     }
 }

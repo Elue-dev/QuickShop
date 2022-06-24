@@ -30,6 +30,10 @@ export const StoreProvider = ({ children }) => {
         })
     }
 
+    const clearCart = () => {
+        dispatch({ type: 'CLEAR_CART' })
+    }
+
     const addToWishlist = (payload) => {
         dispatch({
             type: 'ADD_TO_WISHLIST',
@@ -37,7 +41,7 @@ export const StoreProvider = ({ children }) => {
         })
     }
 
-    const values = { state, dispatch, products, setProducts , addToCart, removeFromCart, addToWishlist}
+    const values = { state, dispatch, products, setProducts , addToCart, removeFromCart, clearCart, addToWishlist}
 
     return (
         <StoreContext.Provider value={values}>

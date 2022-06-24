@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = () => {
-        return signOut()
+        return signOut(auth)
     }
 
     const resetPassword = (email) => {

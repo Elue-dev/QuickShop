@@ -39,7 +39,7 @@
     // products styling
     .heading {
         text-align: center;
-        font-family: 'Permanent Marker', cursive;
+        font-family: $headingFont;
     }
     .products {
         padding-top: 2rem;
@@ -50,7 +50,7 @@
         padding: 3rem 6rem;
         row-gap: 3rem;
     }
-    .product_details {
+    .products_details {
         background-color: #fff;
         width: 400px;
         min-height: 500px;

@@ -9,13 +9,13 @@ nav {
 }
 .navbar {
     @include wrapper();
-    @include flexBox(space-between, center);
+    @include flexBox(space-between, center, row);
     padding-top: 1.3rem;
     padding-bottom: 1rem;
     .logo {
         font-weight: 500;
         font-size: 1.5rem;
-        font-family: 'Permanent Marker', cursive;
+        font-family: $headingFont;
         span {
             color: $mainColor;
         }
@@ -24,7 +24,7 @@ nav {
         li {
             list-style: none;
             display: inline-block;
-            a, p{
+            a, p {
                 margin-right: 1.7rem;
                 font-size: 1.3rem;
                 cursor: pointer;
@@ -44,12 +44,15 @@ nav {
             border-radius: 50%;
             position: relative;
         }
+        .cart {
+            margin-right: .9rem;
+        }
         .cart_count {
             right: 50px;
             top: -20px;
         }
         .wishlist_count {
-            right: 83px;
+            right: 100px;
             top: -20px;
         }
         .user {
@@ -67,6 +70,21 @@ nav {
                 padding: 1rem 1rem;
                 display: none;
                 line-height: 2;
+                a {
+                    color: $mainColor;
+                }
+                .logout {
+                    cursor: pointer;
+                    margin-top: -1rem;
+                    background: $mainColor;
+                    color: #fff;
+                    padding: 0.1rem 0.2rem;
+                    border-radius: 0.3rem;
+                    border: 0;
+                    outline: 0;
+                    font-weight: 700;
+                    text-align: center;
+                }
             }
             .auth_links.show {
                 display: block;
