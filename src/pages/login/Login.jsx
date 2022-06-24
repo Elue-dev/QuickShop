@@ -29,7 +29,7 @@ export default function Login() {
       toast.success('Successfully logged in', {autoClose: 2000, pauseOnFocusLoss: false} )
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
-          setError('Google sign in failed. (You exited google sign in)')
+          setError('Google sign in failed. (You exited the google sign in)')
           window.setTimeout(() => {
             setError('')
         }, 3500)

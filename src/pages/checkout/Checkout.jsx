@@ -42,7 +42,7 @@ export default function Checkout() {
             <div>
     
               <div className="details_grid">
-                <img src={product.preview} alt="" />
+                <img src={product.preview} alt={product.name} />
                 <p>{product.name}</p>
                 <p>NGN {product.price - 349}</p>
               </div>
@@ -64,6 +64,16 @@ export default function Checkout() {
       </>) : (
         <h1>Nothing to checkout</h1>
       )}
+
+      {cart.length ? (
+        <div style={{ paddingTop: '3rem'}} className='cards'>
+          For flutterwave cards to test with in the payment page, use any of the cards in this  
+          <a 
+           href='https://developer.flutterwave.com/docs/integration-guides/testing-helpers/' 
+           style={{ color: '#bb5353'}}>Link
+          </a>
+        </div>
+      ) : null}
     </div>
   )
 }

@@ -173,6 +173,13 @@ $headingFont: 'Permanent Marker', cursive;
             border-radius: 50%;
         }
     }
+    .checkout div .details_grid {
+        :first-child {
+            width: 90px;
+            height: 60px;
+            border-radius: 0.5rem;
+        }
+    }
     .checkout .heading_grid {
         margin-top: 2rem;
     }
@@ -217,6 +224,7 @@ $headingFont: 'Permanent Marker', cursive;
     .signup form {
         line-height: 1.5;
     }
+    
 }
 
 @include mQ(380px) {
@@ -231,7 +239,7 @@ $headingFont: 'Permanent Marker', cursive;
         right: 15%;
     }
     .home .hero .hero_text h2 .name {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
     }
     .product_details .details_row .details_texts .detail_name {
         font-size: 1.1rem;
@@ -273,5 +281,34 @@ $headingFont: 'Permanent Marker', cursive;
     }
     .home .product_texts h2 {
         font-size: 1rem;
-    }    
+    }
+    .home .product_image:after {
+        left: 0;
+        height: 200px;
+    }
+    .home .products_details .add_item_icon {
+        top: 1rem;
+    }
+    .home .products_details .details_icon {
+        top: 4rem;
+    }
+    .checkout div .details_grid :nth-child(2), .checkout div .details_grid :last-child {
+        padding-top: 0.5rem;
+        font-size: .6rem;
+        font-weight: 600;
+    }
+    .checkout div .details_grid {
+        :first-child {
+            width: 70px;
+            height: 50px;
+            border-radius: 0.5rem;
+        }
+    }
+    .checkout .pay_grid button {
+        padding: 0.2rem 1rem;
+        font-size: 1rem;
+    }
+    .checkout .cards a {
+        margin-left: .5rem;
+    }
 }
