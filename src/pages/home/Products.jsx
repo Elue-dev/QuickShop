@@ -12,7 +12,7 @@ export default function Products() {
 
     useEffect(() => {
         const getProducts = async () => {
-            const fetchProducts = await fetch ('https://5d76bf96515d1a0014085cf9.mockapi.io/product')
+            const fetchProducts = await fetch (process.env.REACT_APP_API)
             const jsonData = await fetchProducts.json()
             setProducts(jsonData)
         }

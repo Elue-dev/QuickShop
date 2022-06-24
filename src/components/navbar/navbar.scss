@@ -44,8 +44,8 @@ nav {
             border-radius: 50%;
             position: relative;
         }
-        .cart {
-            margin-right: .9rem;
+        .cart, .wishlist {
+            margin-right: 2.9rem;
         }
         .cart_count {
             right: 50px;
@@ -61,6 +61,7 @@ nav {
         .user_auth {
             position: absolute;
             top: 5rem;
+            right: 5rem;
             background: #fff;
             max-height: 150px;
             max-width: 230px;

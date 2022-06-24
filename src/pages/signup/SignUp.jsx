@@ -93,7 +93,7 @@ export default function SignUp() {
           <span>Re-enter Password:</span> <br />
             <input type="password" value={confirmPassword}  onChange={(e)=>setConfirmPassword(e.target.value)} required />
         </label> <br />
-        <button className="submit disabled">Continue</button>
+        <button className="btn disabled">Continue</button>
       </form>
       <p className='get_account'>Have a QuickShop account? <Link to='/login'>Login</Link></p>
     </div>

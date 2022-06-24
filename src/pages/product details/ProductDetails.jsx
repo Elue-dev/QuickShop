@@ -4,15 +4,16 @@ import { useStore } from '../../contexts/StoreContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './productDetails.scss'
+import RelatedProducts from './RelatedProducts'
 
 export default function ProductDetails() {
     const { id } = useParams()
     const [ item, setItem ] = useState([])
-    const { state: { cart }, addToCart } = useStore()
+    const { state: { cart, wishlist }, addToCart, addToWishlist, removeFromWishlist} = useStore()
 
     useEffect(() => {
         const prodDetail = async () => {
-            const details = await fetch(`https://5d76bf96515d1a0014085cf9.mockapi.io/product/${id}`)
+            const details = await fetch(process.env.REACT_APP_API +id)
             const detailsData = await details.json()
             setItem(detailsData)
         }
@@ -24,6 +25,16 @@ export default function ProductDetails() {
         addToCart(item)
         toast.success('Item added to your cart', {autoClose: 1000, pauseOnFocusLoss: false} )
     }
+
+    const handleAddWishlist = () => {
+        addToWishlist(item)
+        toast.success('Item added to your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+    }
+
+    // const handleRemoveWishlist = (product) => {
+    //     removeFromWishlist(product)
+    //     // toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+    // }
 
   return (
     <div className='product_details'>
@@ -48,14 +59,19 @@ export default function ProductDetails() {
                     <span>NGN {item.price}</span>
                     <span>NGN {item.price - 349}</span>
                 </p>
-                {cart.some(i => i.id === item.id) ? (
+                {cart.some(c => c.id === item.id) ? (
                     <button disabled className="btn add_to_cart disabled">Added to cart</button>
                 ) : (
                     <button onClick={handleAddItem} className="btn add_to_cart">Add to cart</button>
                 )}
-                <button className="btn buy_now">Buy now</button>
+                {wishlist.some(w => w.id ===  item.id) ? (
+                   <button disabled className="btn buy_now">Added to wishlist</button>
+                ) : (
+                    <button onClick={handleAddWishlist} className="btn buy_now">Add to wishlist</button>
+                )}
             </div>
         </div>
+        {/* <RelatedProducts  /> */}
     </div>
   )
 }

@@ -10,7 +10,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Navbar() {
-  const { state: {cart} } = useStore()
+  const { state: { cart, wishlist } } = useStore()
   const [showAuth, setShowAuth] = useState(false)
   const [error, setError] = useState(null)
   
@@ -35,9 +35,9 @@ export default function Navbar() {
         <Link to='/' className='logo'><p>Quick<span>Shop</span></p></Link>
           <ul className='nav_links'>
             <li><p><FaUserAlt className='nav_icon user' onClick={()=>setShowAuth(!showAuth)} /></p></li>
-            <li><Link to='/wishlist'><BsFillHeartFill className='nav_icon wishlist' /></Link></li>
+            {/* <li><Link to='/wishlist'><BsFillHeartFill className='nav_icon wishlist' /></Link></li> */}
             <li><Link to='/cart'><ImCart className='nav_icon cart' /></Link></li>
-            <Link to='/'><span className='wishlist_count count'>0</span></Link>
+            {/* <Link to='/wishlist'><span className='wishlist_count count'>{wishlist.length}</span></Link> */}
             <Link to='/cart'><span className='cart_count count'>{cart.length}</span></Link>
             <div className='user_auth' onClick={()=>setShowAuth(false)}>
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>

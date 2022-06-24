@@ -16,10 +16,10 @@ export const StoreProvider = ({ children }) => {
         wishlist: []
     })
 
-    const addToCart = (payload) => {
+    const addToCart = (product) => {
         dispatch({
             type: 'ADD_TO_CART',
-            payload: payload
+            payload: product
         })
     }
 
@@ -34,14 +34,25 @@ export const StoreProvider = ({ children }) => {
         dispatch({ type: 'CLEAR_CART' })
     }
 
-    const addToWishlist = (payload) => {
+    const addToWishlist = (product) => {
         dispatch({
             type: 'ADD_TO_WISHLIST',
-            payload: payload
+            payload: product
         })
     }
 
-    const values = { state, dispatch, products, setProducts , addToCart, removeFromCart, clearCart, addToWishlist}
+    const removeFromWishlist = (id) => {
+        dispatch({
+            type: ' REMOVE_FROM_WISHLIST',
+            payload: id
+        })
+    }
+
+    const clearWishlist = () => {
+        dispatch({ type: 'CLEAR_CART' })
+    }
+
+    const values = { state, products, setProducts , addToCart, removeFromCart, clearCart, addToWishlist, removeFromWishlist, clearWishlist}
 
     return (
         <StoreContext.Provider value={values}>

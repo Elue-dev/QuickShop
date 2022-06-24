@@ -12,7 +12,15 @@
       text-align: center;
       font-size: 1.4rem;
       a {
-         text-decoration: underline
+         text-decoration: underline;
+         color: $mainColor;
+      }
+      span {
+         color: $mainColor;
+      }
+      .basket_empty {
+         font-size: 10rem;
+         margin-bottom: 1rem
       }
     }
     .cart_item {

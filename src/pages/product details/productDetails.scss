@@ -85,4 +85,54 @@ img {
             }
         }
     }
+
+    // related styling
+
+    .related_products {
+        padding-top: 6rem;
+        .related_data {
+            @include grid(repeat(4, 1fr));
+            gap: 1rem;
+            .related_grid {
+                position: relative;
+                .related_image {
+                    position: relative;
+                    &:after {
+                        position: absolute;
+                        content: '';
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        background-color: #000;
+                        opacity: .8;
+                    }
+                    img {
+                        width: 100%;
+                        height: 250px;
+                        object-fit: cover;
+                        position: relative;
+                    }
+                }
+                .related_texts {
+                    position: absolute;
+                    color: #fff;
+                    top: 27%;
+                    left: 3%;
+                    line-height: 1.7;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                    @include flexBox(center, left, column);
+                    :first-child {
+                        padding-bottom: 1rem;
+                    }
+                    :nth-child(2) {
+                        span {
+                            color: $mainColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
