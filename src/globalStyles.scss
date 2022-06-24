@@ -226,16 +226,25 @@ $headingFont: 'Permanent Marker', cursive;
     }
     .login .error, .signup .error {
         width: 300px;
+        border-radius: .5rem;
     }
     .login .message {
         width: 320px;
+        border-radius: .5rem;
+    }
+    .cart .clear_cart_row .clear_cart, .cart .checkout_btn {
+        padding: 0.3rem 1rem;
+        font-size: 1rem;
+    }
+    .cart .summary .summary_title {
+        padding-top: 1rem;
+    }
+    .checkout .cards {
+        padding-bottom: 3rem;
     }
 }
 
 @include mQ(380px) {
-    body {
-        font-size: .8rem;
-    }
     h1 {
         font-size: 1.27rem;
     }
@@ -299,7 +308,7 @@ $headingFont: 'Permanent Marker', cursive;
     }
     .checkout div .details_grid :nth-child(2), .checkout div .details_grid :last-child {
         padding-top: 0.5rem;
-        font-size: .6rem;
+        font-size: .7rem;
         font-weight: 600;
     }
     .checkout div .details_grid {

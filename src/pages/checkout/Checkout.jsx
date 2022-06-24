@@ -14,7 +14,7 @@ export default function Checkout() {
     amount: products.price,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
-    redirect_url: "https://localhost:3000",
+    redirect_url: "https://quickshopapp.netlify.app",
     customer: {
       email: user.email,
     },

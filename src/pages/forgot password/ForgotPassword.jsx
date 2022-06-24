@@ -28,10 +28,10 @@ export default function ForgotPassword() {
         setLoading(true)
         await resetPassword(email)
         setEmail('')
-        setMessage('Check your inbox for further instructions (Ensure to check spam folder)')
+        setMessage('Check your inbox for further instructions (Ensure to check spam folder). If the link is not clickable, copy the link and paste in browser')
         window.setTimeout(() => {
           navigate('/login')
-      }, 4000)
+      }, 9000)
     } catch (err){
       if (err.message === 'Firebase: Error (auth/user-not-found).') {
         setError('This email is not registered')
@@ -64,7 +64,7 @@ export default function ForgotPassword() {
         <label>
             <input type="email" value={email} ref={emailRef} onChange={(e)=>setEmail(e.target.value)} required placeholder='Enter your email' />
         </label> <br />
-        <button className="submit">Proceed</button>
+        <button className="btn">Proceed</button>
       </form>
       <p className='forgot_password'><Link to='/login'>Back to Login</Link></p>
       <p className='get_account'>New to QuickShop? <Link to='/signup'>Sign Up</Link></p>
