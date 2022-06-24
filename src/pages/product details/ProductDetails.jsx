@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useStore } from '../../contexts/StoreContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -64,11 +64,12 @@ export default function ProductDetails() {
                 ) : (
                     <button onClick={handleAddItem} className="btn add_to_cart">Add to cart</button>
                 )}
-                {wishlist.some(w => w.id ===  item.id) ? (
+                {/* {wishlist.some(w => w.id ===  item.id) ? (
                    <button disabled className="btn buy_now">Added to wishlist</button>
                 ) : (
                     <button onClick={handleAddWishlist} className="btn buy_now">Add to wishlist</button>
-                )}
+                )} */}
+                <Link to ='/'><button className="btn buy_now">Keep shopping</button></Link>
             </div>
         </div>
         {/* <RelatedProducts  /> */}

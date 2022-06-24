@@ -224,7 +224,12 @@ $headingFont: 'Permanent Marker', cursive;
     .signup form {
         line-height: 1.5;
     }
-    
+    .login .error, .signup .error {
+        width: 300px;
+    }
+    .login .message {
+        width: 320px;
+    }
 }
 
 @include mQ(380px) {
