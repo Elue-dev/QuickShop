@@ -6,6 +6,9 @@ export const StoreReducer = (state, action) => {
             return  { ...state, cart: state.cart.filter(i => i.id !== action.payload.id) }
         case 'CLEAR_CART':
             return { ...state, cart: []}
+        case 'CHANGE_QTY':
+            return {...state,
+                cart: state.cart.filter(c => c.id === action.payload.id ? (c.qty = action.payload.qty) : c.qty)};
         case 'ADD_TO_WISHLIST':
             return { ...state, wishlist: [...state.wishlist, {...action.payload}] }
         case 'REMOVE_FROM_WISHLIST':

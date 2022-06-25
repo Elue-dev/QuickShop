@@ -1,9 +1,10 @@
 @import '../../globalStyles.scss';
 
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100000;
+    width: 100%;
+    z-index: 1000;
     background: #fff;
     box-shadow: 0 3px 8px rgba(0,0,0,.3);
 }
@@ -25,9 +26,15 @@ nav {
             list-style: none;
             display: inline-block;
             a, p {
-                margin-right: 1.7rem;
+                margin-right: .7rem;
                 font-size: 1.3rem;
                 cursor: pointer;
+                .span_icon {
+                    margin-left: .2rem;
+                    color: $mainColor;
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
                 .nav_icon {
                     font-size: 1.5rem
                 }
@@ -44,15 +51,15 @@ nav {
             border-radius: 50%;
             position: relative;
         }
-        .cart, .wishlist {
-            margin-right: 2.9rem;
-        }
-        .cart_count {
-            right: 50px;
-            top: -20px;
-        }
+        // .cart, .wishlist {
+        //     margin-right: 2.9rem;
+        // }
+        // .cart_count {
+        //     right: 50px;
+        //     top: -20px;
+        // }
         .wishlist_count {
-            right: 100px;
+            right: 108px;
             top: -20px;
         }
         .user {
@@ -61,7 +68,7 @@ nav {
         .user_auth {
             position: absolute;
             top: 5rem;
-            right: 5rem;
+            right: 9rem;
             background: #fff;
             max-height: 150px;
             max-width: 230px;

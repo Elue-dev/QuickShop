@@ -4,35 +4,30 @@
 html, body, #root {
   height: 100%;
 }
-
 #root {
   display: flex;
   flex-direction: column;
  }
-
 body {
    font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
+  padding-top: 65px; 
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 a {
   text-decoration: none;
   color: #333;
 }
-
 .spinner{
   position: absolute;
   top: 70%;
@@ -40,11 +35,17 @@ a {
   transform: translate(-50%, -50%);
   font-size: 8rem;
 }
-
 .details_spinner {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 8rem;
+}
+.related_spinner {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
 }

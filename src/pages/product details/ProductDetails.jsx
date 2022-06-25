@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useStore } from '../../contexts/StoreContext'
 import { BiLoader } from 'react-icons/bi'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './productDetails.scss'
-import RelatedProducts from './RelatedProducts'
 
 export default function ProductDetails() {
     const { id } = useParams()
@@ -32,10 +31,10 @@ export default function ProductDetails() {
         toast.success('Item added to your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
     }
 
-    // const handleRemoveWishlist = (product) => {
-    //     removeFromWishlist(product)
-    //     // toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
-    // }
+    const handleRemoveWishlist = (product) => {
+        removeFromWishlist(product)
+        toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+    }
 
     if (item.length === 0) {
         return(
@@ -73,15 +72,13 @@ export default function ProductDetails() {
                 ) : (
                     <button onClick={handleAddItem} className="btn add_to_cart">Add to cart</button>
                 )}
-                {/* {wishlist.some(w => w.id ===  item.id) ? (
-                   <button disabled className="btn buy_now">Added to wishlist</button>
+                 {wishlist.some(w => w.id ===  item.id) ? (
+                   <button onClick={() => handleRemoveWishlist(item)} className="btn buy_now">Remove from wishlist</button>
                 ) : (
                     <button onClick={handleAddWishlist} className="btn buy_now">Add to wishlist</button>
-                )} */}
-                <Link to ='/'><button className="btn buy_now">Keep shopping</button></Link>
+                )}
             </div>
         </div>
-        {/* <RelatedProducts  /> */}
     </div>
   )
 }

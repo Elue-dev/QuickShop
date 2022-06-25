@@ -10,6 +10,7 @@ export const useStore = () => {
 export const StoreProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])
+    const [inp, setInp] = useState(1)
 
     const [state, dispatch] = useReducer(StoreReducer, {
         cart: [],
@@ -34,6 +35,16 @@ export const StoreProvider = ({ children }) => {
         dispatch({ type: 'CLEAR_CART' })
     }
 
+    const changeQuantity = (id, value) => {
+        dispatch({
+            type: 'CHANGE_QTY',
+             payload: {
+             id: id,
+             qty: value
+            }
+        })
+    }
+
     const addToWishlist = (product) => {
         dispatch({
             type: 'ADD_TO_WISHLIST',
@@ -43,16 +54,19 @@ export const StoreProvider = ({ children }) => {
 
     const removeFromWishlist = (id) => {
         dispatch({
-            type: ' REMOVE_FROM_WISHLIST',
+            type: 'REMOVE_FROM_WISHLIST',
             payload: id
         })
     }
 
     const clearWishlist = () => {
-        dispatch({ type: 'CLEAR_CART' })
+        dispatch({ type: 'CLEAR_WISHLIST' })
     }
 
-    const values = { state, products, setProducts , addToCart, removeFromCart, clearCart, addToWishlist, removeFromWishlist, clearWishlist}
+    const values = { 
+        state, dispatch, products, setProducts , addToCart, removeFromCart, clearCart, 
+        addToWishlist, removeFromWishlist, clearWishlist, changeQuantity, inp, setInp
+    }
 
     return (
         <StoreContext.Provider value={values}>

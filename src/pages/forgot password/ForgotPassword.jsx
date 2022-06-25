@@ -25,10 +25,10 @@ export default function ForgotPassword() {
     try {
         setError('')
         setMessage('')
-        setLoading(true)
         await resetPassword(email)
+        setLoading(true)
         setEmail('')
-        setMessage('Check your inbox for further instructions (Ensure to check spam folder). If the link is not clickable, copy the link and paste in browser')
+        setMessage('Check your inbox for further instructions (Ensure to check spam folder).')
         window.setTimeout(() => {
           navigate('/login')
       }, 9000)
@@ -58,16 +58,28 @@ export default function ForgotPassword() {
   return (
     <div className='login'>
       <h1>Password Reset</h1>
+      <p className='reset_desc'>You may need to check your spam folder.
+        If the link appears not to be clickable, you may need to copy the link and paste in your browser.
+      </p>
       {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
       {message && <p className='alert message'> <GrStatusGood className='message_icon' style={{ color: '#fff'}} />  {message} </p>}
       <form onSubmit={handleSubmit}>
         <label>
-            <input type="email" value={email} ref={emailRef} onChange={(e)=>setEmail(e.target.value)} required placeholder='Enter your email' />
+            <input type="email"
+             value={email} 
+             ref={emailRef} 
+             onChange={(e)=>setEmail(e.target.value)} 
+             required
+             placeholder='Enter your email' />
         </label> <br />
         <button className="btn">Proceed</button>
       </form>
-      <p className='forgot_password'><Link to='/login'>Back to Login</Link></p>
-      <p className='get_account'>New to QuickShop? <Link to='/signup'>Sign Up</Link></p>
+      <p className='forgot_password'>
+        <Link to='/login'>Back to Login</Link>
+      </p>
+      <p className='get_account'>
+        New to QuickShop? <Link to='/signup'>Sign Up</Link>
+      </p>
     </div>
   )
 }

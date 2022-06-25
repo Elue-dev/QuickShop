@@ -1,7 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext'
 import { useStore } from '../../contexts/StoreContext'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
-import { RiShoppingCartLine } from 'react-icons/ri'
 import './checkout.scss'
 import { useEffect, useState } from 'react';
 

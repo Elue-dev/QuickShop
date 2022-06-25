@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useStore } from "../../contexts/StoreContext"
-import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
+import { BsCartPlus, BsCartCheck, BsHeart } from 'react-icons/bs'
 import { FaRegEye } from 'react-icons/fa'
 import { BiLoader } from 'react-icons/bi'
 import { Link } from "react-router-dom"
@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Products() {
 
-    const { state: {cart}, products, setProducts, addToCart } = useStore()
+    const { state: { cart }, products, setProducts, addToCart } = useStore()
 
     useEffect(() => {
         const getProducts = async () => {
@@ -21,13 +21,13 @@ export default function Products() {
         getProducts()
     }, [])
 
-    const handleAddItem = (product) => {
+    const handleAddToCart = (product) => {
         addToCart(product)
         toast.success('Item added to your cart', {autoClose: 1000, pauseOnFocusLoss: false} )
     }
 
     if (products.length === 0) {
-        return(
+        return (
             <div className='spinner'>
              <BiLoader />
             </div>
@@ -45,12 +45,16 @@ export default function Products() {
                             {cart.some(p => p.id === product.id) ? (
                                 <>
                                     <BsCartCheck className="add_item_icon"/>
-                                    <Link to={`/product/${product.id}`}><FaRegEye className="details_icon"/></Link>
+                                    <Link to={`/product/${product.id}`}>
+                                        <FaRegEye className="details_icon"/>
+                                    </Link>
                                  </>
                             ) : (
                                 <>
-                                    <BsCartPlus className="add_item_icon" onClick={()=>handleAddItem(product)} />
-                                    <Link to={`/product/${product.id}`}><FaRegEye className="details_icon"/></Link>
+                                    <BsCartPlus className="add_item_icon" onClick={()=>handleAddToCart(product)} />
+                                    <Link to={`/product/${product.id}`}>
+                                        <FaRegEye className="details_icon"/>
+                                    </Link>
                                 </>
                             )}
                         </div>

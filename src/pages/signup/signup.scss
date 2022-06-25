@@ -1,7 +1,8 @@
 @import '../../globalStyles.scss';
 
 .signup {
-    padding-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
     @include flexBox(center, center, column);
     h1 {
         font-family: $headingFont;
@@ -12,6 +13,27 @@
         gap: .3rem;
         .error_icon {
             font-size: 1.4rem;
+        }
+    }
+    .google_signin {
+        padding-bottom: 1rem;
+        .g_signin {
+            background: rgb(226, 224, 224);
+            color: $mainColor;
+            padding: .4rem 2rem;
+            border-radius: .3rem;
+            border: 1px solid $mainColor;
+            outline: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: inline-block;
+            width: 500px;
+            @include flexBox(center, center, row);
+            gap: .6rem;
+            .google_icon {
+                font-size: 2rem;
+            }
         }
     }
     form {
@@ -28,9 +50,11 @@
             width: 500px;
             padding: .7rem;
             margin-bottom: 1.7rem;
-            border: 1px solid #333;
+            border: 0;
+            border-bottom: 1px solid #333;
             outline: 0;
             font-size: 1.3rem;
+            border-radius: 0;
             &:hover, &:focus {
                 border-color: $mainColor;
             }

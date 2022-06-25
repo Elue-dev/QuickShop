@@ -1,13 +1,14 @@
+
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillHeartFill } from 'react-icons/bs'
 import { ImCart } from 'react-icons/im'
-import './navbar.scss'
 import { useStore } from '../../contexts/StoreContext'
 import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import './navbar.scss'
 
 export default function Navbar() {
   const { state: { cart, wishlist } } = useStore()
@@ -34,11 +35,19 @@ export default function Navbar() {
       <div className="navbar">
         <Link to='/' className='logo'><p>Quick<span>Shop</span></p></Link>
           <ul className='nav_links'>
-            <li><p><FaUserAlt className='nav_icon user' onClick={()=>setShowAuth(!showAuth)} /></p></li>
-            {/* <li><Link to='/wishlist'><BsFillHeartFill className='nav_icon wishlist' /></Link></li> */}
-            <li><Link to='/cart'><ImCart className='nav_icon cart' /></Link></li>
-            {/* <Link to='/wishlist'><span className='wishlist_count count'>{wishlist.length}</span></Link> */}
-            <Link to='/cart'><span className='cart_count count'>{cart.length}</span></Link>
+            <li>
+              <p><FaUserAlt className='nav_icon user' onClick={()=>setShowAuth(!showAuth)} /></p>
+            </li>
+            <li>
+              <Link to='/wishlist'><BsFillHeartFill className='nav_icon wishlist_icon' />
+                <span className='span_icon'>({wishlist.length})</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/cart'><ImCart className='nav_icon cart_icon' />
+                <span className='span_icon'>({cart.length})</span>
+              </Link>
+            </li>
             <div className='user_auth' onClick={()=>setShowAuth(false)}>
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>
                 {user ? (
@@ -56,6 +65,7 @@ export default function Navbar() {
             </div>
           </ul>
       </div>
+      {error && <p className='error'>{error}</p>}
       <ToastContainer />
     </nav>
   )

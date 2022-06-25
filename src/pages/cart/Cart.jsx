@@ -1,26 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '../../contexts/StoreContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { MdDelete  } from 'react-icons/md'
-import { FaEye } from 'react-icons/fa'
 import { ImPriceTags } from 'react-icons/im'
 import { BsFillBasket3Fill } from 'react-icons/bs'
 import { TbBasketOff } from 'react-icons/tb'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import RelatedProducts_ from './RelatedProducts_'
 import 'react-toastify/dist/ReactToastify.css'
 import './cart.scss'
-import { useAuth } from '../../contexts/AuthContext'
 
 export default function Cart() {
-    const { state: {cart}, removeFromCart } = useStore()
-    const [count, setCount] = useState(1)
+    const { state: {cart}, dispatch, removeFromCart} = useStore()
     const [total, setTotal] = useState(null)
     const { user } = useAuth()
     const { clearCart} =  useStore()
     const navigate = useNavigate()
 
     useEffect(() => {
-        setTotal(cart.reduce((total, current) => total + Number(current.price - 349), 0))
+        setTotal(cart.reduce((total, current) => total + Number(current.price - 349)* current.qty, 0))
     }, [cart])
 
     const handleRemoveItem = (product) => {
@@ -46,7 +45,9 @@ export default function Cart() {
         {!cart.length && <p className='cart_empty'>
             <TbBasketOff className='basket_empty' /> <br />
             Your Quick<span>Shop</span> Cart is Empty <br /><Link to='/'>Start shopping</Link>
-        </p> }
+          </p>
+        }
+        {cart.length ? (<hr />) : null}
         {cart?.map(item => (
             <>
                 <div className="cart_item" key={item.id}>
@@ -57,14 +58,25 @@ export default function Cart() {
                     </div>
                     <div className='cart_name'> {item.name}</div>
                     <div className='cart_price'><b>NGN</b> {item.price - 349}</div>
-                    <div><b>Quantity:</b> <input
-                        type="text" 
-                        value={count} 
-                        onChange={(e)=>setCount(e.target.value)} 
-                        className='count_input' /> <br /></div>
-                         {/* <Link to={`/product/${item.id}`}>
-                            <FaEye className='view_item' />
-                        </Link> */}
+                    <div>
+                        <b>Quantity:</b>
+                        <select
+                            type="number" 
+                            onChange={(e)=>dispatch({
+                            type: 'CHANGE_QTY',
+                             payload: {
+                             id: item.id,
+                             qty: e.target.value
+                            }
+                        })} 
+                        className='count_input'>
+                            <option>1</option><option>2</option><option>3</option>
+                            <option>4</option><option>5</option><option>6</option>
+                            <option>7</option><option>8</option><option>9</option>
+                            <option>10</option>
+                        </select> <br />
+
+                    </div>
                     <button className="remove_item" onClick={() => handleRemoveItem(item)}>
                         <MdDelete className='remove_icon' />
                     </button>
@@ -91,6 +103,7 @@ export default function Cart() {
                 <Link to='/checkout' onClick={handleCheckoutRedirect} className='checkout_btn'>Checkout</Link>
             </div>
        ) : null}
+       <RelatedProducts_  />
     </div>
   )
 }

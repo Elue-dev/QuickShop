@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { BiLoader } from 'react-icons/bi'
 
-export default function RelatedProducts() {
+export default function RelatedProducts_() {
 
     const [related, setRelated] = useState([])
-    const navigate = useNavigate()
 
     useEffect(() => {
         const relatedProducts = async () => {
@@ -16,17 +16,21 @@ export default function RelatedProducts() {
         relatedProducts()
     },[])
 
-    const click = (id) => {
-        navigate(id)
+    if (related.length === 0) {
+        return(
+            <div className='spinner related_spinner'>
+             <BiLoader />
+            </div>
+        ) 
     }
 
   return (
     <div className='related_products'>
-        <h1 className="heading">You may also like</h1>
+        <h1 className="heading">You may like</h1>
             <div className="related_data">
-                {related?.slice(2,10).map(product => (
+                {related?.slice(0,4).map(product => (
                     <Link to={`/product/${product.id}`} key={product.id}  >
-                        <div className='related_grid' onClick={()=>click(product.id)}>
+                        <div className='related_grid'>
                             <div className='related_image'>
                                 <img src={product.preview} alt={product.name} />
                             </div>
