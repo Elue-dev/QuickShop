@@ -26,19 +26,19 @@ export default function SignUp() {
     e.preventDefault()
 
     if (password !== confirmPassword) {
-      window.setTimeout(() => {
-        return setError('Passwords do not match')
-      })
-    }
-
-    if (password.length <= 6) {
-      window.setTimeout(() => {
-        return setError('password should be greater than 6 characters')
-      })
+        setError('Passwords do not match')
+        window.setTimeout(() => {
+          setError('')
+         }, 3000)
+      return
     }
 
     if (password.length > 9) {
-      return setError('Password must be between 6-9 characters')
+      setError('Password must be between 6-9 characters')
+      window.setTimeout(() => {
+       setError('')
+      }, 3000)
+      return
     }
 
     try {

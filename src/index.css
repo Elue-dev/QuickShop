@@ -35,11 +35,16 @@ a {
 
 .spinner{
   position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+}
+
+.details_spinner {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.spin_det{
-  left: 45%;
+  font-size: 8rem;
 }

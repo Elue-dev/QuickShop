@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useStore } from '../../contexts/StoreContext'
+import { BiLoader } from 'react-icons/bi'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './productDetails.scss'
@@ -35,6 +36,14 @@ export default function ProductDetails() {
     //     removeFromWishlist(product)
     //     // toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
     // }
+
+    if (item.length === 0) {
+        return(
+            <div className='spinner details_spinner'>
+             <BiLoader />
+            </div>
+        ) 
+    }
 
   return (
     <div className='product_details'>

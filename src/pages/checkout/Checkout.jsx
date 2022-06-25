@@ -3,10 +3,12 @@ import { useStore } from '../../contexts/StoreContext'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { RiShoppingCartLine } from 'react-icons/ri'
 import './checkout.scss'
+import { useEffect, useState } from 'react';
 
 export default function Checkout() {
   const { user } = useAuth()
   const { state: { cart }, products } = useStore()
+  const [total, setTotal] = useState(null)
 
   const config = {
     public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY,
@@ -26,6 +28,10 @@ export default function Checkout() {
   };
 
   const handleFlutterPayment = useFlutterwave(config);
+
+  useEffect(() => {
+    setTotal(cart.reduce((total, current) => total + Number(current.price - 349), 0))
+}, [cart])
 
   return (
     <div className='checkout'>
@@ -59,7 +65,7 @@ export default function Checkout() {
                      },
                      onClose: () => {},
                 });
-                }}>Pay</button>
+                }}>Pay NGN{total}</button>
           </div>
       </>) : (
         <h1>Nothing to checkout</h1>
