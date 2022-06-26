@@ -7,15 +7,14 @@ import { BsFillBasket3Fill } from 'react-icons/bs'
 import { TbBasketOff } from 'react-icons/tb'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import RelatedProducts_ from './RelatedProducts_'
 import 'react-toastify/dist/ReactToastify.css'
+import RelatedProducts_ from './RelatedProducts_'
 import './cart.scss'
 
 export default function Cart() {
-    const { state: {cart}, dispatch, removeFromCart} = useStore()
+    const { state: {cart}, dispatch, removeFromCart, clearCart} = useStore()
     const [total, setTotal] = useState(null)
     const { user } = useAuth()
-    const { clearCart} =  useStore()
     const navigate = useNavigate()
 
     useEffect(() => {

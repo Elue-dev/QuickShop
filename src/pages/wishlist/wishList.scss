@@ -70,8 +70,11 @@
 .related_products {
     padding-top: 6rem;
     padding-bottom: 4rem;
+    @include mQ(420px) {
+        padding-top: 3rem;
+    }
     .heading {
-        padding-bottom: 2rem
+        padding-bottom: 1rem
     }
     .related_data {
         @include grid(repeat(4, 1fr));

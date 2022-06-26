@@ -31,7 +31,7 @@ export default function ForgotPassword() {
         setMessage('Check your inbox for further instructions (Ensure to check spam folder).')
         window.setTimeout(() => {
           navigate('/login')
-      }, 9000)
+      }, 5000)
     } catch (err){
       if (err.message === 'Firebase: Error (auth/user-not-found).') {
         setError('This email is not registered')

@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext'
 import { useStore } from '../../contexts/StoreContext'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import './checkout.scss'
-import { useEffect, useState } from 'react';
 
 export default function Checkout() {
   const { user } = useAuth()
-  const { state: { cart }, products } = useStore()
+  const { state: { cart }, products, clearCart } = useStore()
   const [total, setTotal] = useState(null)
 
   const config = {
@@ -29,8 +31,13 @@ export default function Checkout() {
   const handleFlutterPayment = useFlutterwave(config);
 
   useEffect(() => {
-    setTotal(cart.reduce((total, current) => total + Number(current.price - 349), 0))
-}, [cart])
+    setTotal(cart.reduce((total, current) => total + Number(current.price - 349)* current.qty, 0))
+  }, [cart])
+
+  const handleClearCart  = () => {
+    clearCart()
+    toast.success('Cart cleared', {autoClose: 1000, pauseOnFocusLoss: false} )
+  }
 
   return (
     <div className='checkout'>
@@ -61,6 +68,7 @@ export default function Checkout() {
                         callback: (response) => {
                         console.log(response);
                         closePaymentModal()
+                        handleClearCart()
                      },
                      onClose: () => {},
                 });

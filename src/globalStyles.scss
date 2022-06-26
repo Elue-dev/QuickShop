@@ -272,6 +272,9 @@ $headingFont: 'Permanent Marker', cursive;
     .product_details .details_row .details_texts .buy_now {
         padding: 0.4rem 0.5rem;
     }
+    .wishlist .wishlist_empty p {
+        font-size: 1rem;
+    }
 }
 
 @include mQ(380px) {

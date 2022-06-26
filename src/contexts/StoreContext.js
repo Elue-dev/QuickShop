@@ -10,7 +10,6 @@ export const useStore = () => {
 export const StoreProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])
-    const [inp, setInp] = useState(1)
 
     const [state, dispatch] = useReducer(StoreReducer, {
         cart: [],
@@ -65,7 +64,7 @@ export const StoreProvider = ({ children }) => {
 
     const values = { 
         state, dispatch, products, setProducts , addToCart, removeFromCart, clearCart, 
-        addToWishlist, removeFromWishlist, clearWishlist, changeQuantity, inp, setInp
+        addToWishlist, removeFromWishlist, clearWishlist, changeQuantity
     }
 
     return (

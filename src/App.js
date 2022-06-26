@@ -10,6 +10,7 @@ import ProductDetails from './pages/product details/ProductDetails';
 import Checkout from './pages/checkout/Checkout';
 import ProtectedRoute from './components/protected route/ProtectedRoute';
 import WishList from './pages/wishlist/WishList';
+import Error404 from './components/error404/Error404';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route exact path='/' element={<Home />} />
+            <Route exact path='/:error' element={<Error404 />} />
             <Route exact path='/cart' element={<Cart />} />
             <Route exact path='/wishlist' element={<WishList />} />
             <Route exact path='/product/:id' element={<ProductDetails />} />

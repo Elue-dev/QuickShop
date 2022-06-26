@@ -68,7 +68,7 @@ export default function ProductDetails() {
                     <span>NGN {item.price - 349}</span>
                 </p>
                 {cart.some(c => c.id === item.id) ? (
-                    <button disabled className="btn add_to_cart disabled">Added to cart</button>
+                    <button disabled className="btn add_to_cart disabled">In cart</button>
                 ) : (
                     <button onClick={handleAddItem} className="btn add_to_cart">Add to cart</button>
                 )}
