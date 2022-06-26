@@ -13,7 +13,10 @@ export default function WishList() {
   
   const handleRemoveWish = (item) => {
     removeFromWishlist(item)
-    toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+    toast.success(`${item.name} was removed from your wishlist`, {
+      autoClose: 2000, 
+      pauseOnFocusLoss: false
+    })
   }
 
   return (
@@ -21,7 +24,7 @@ export default function WishList() {
       <h1 className='wishlist_title'>Your wishlist</h1>
       {!wishlist.length && <p className='wishlist_empty'>
         <IoHeartDislikeSharp className='wish_empty' />
-        <p>Your have nothing in your wishlist</p>
+        <p>You have nothing in your wishlist</p>
         </p>
       }
       {wishlist.length ? (

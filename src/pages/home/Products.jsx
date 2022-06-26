@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useStore } from "../../contexts/StoreContext"
-import { BsCartPlus, BsCartCheck, BsHeart } from 'react-icons/bs'
+import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 import { FaRegEye } from 'react-icons/fa'
 import { BiLoader } from 'react-icons/bi'
 import { Link } from "react-router-dom"
@@ -23,7 +23,7 @@ export default function Products() {
 
     const handleAddToCart = (product) => {
         addToCart(product)
-        toast.success('Item added to your cart', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success(`${product.name} added to your cart`, {autoClose: 2000, pauseOnFocusLoss: false} )
     }
 
     if (products.length === 0) {

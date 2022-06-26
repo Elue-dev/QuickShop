@@ -23,7 +23,7 @@ export default function Cart() {
 
     const handleRemoveItem = (product) => {
         removeFromCart(product)
-        toast.success('Item removed from your cart', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success(`${product.name} was removed from your cart`, {autoClose: 2000, pauseOnFocusLoss: false} )
     }
 
     const handleClearCart  = () => {
@@ -33,7 +33,7 @@ export default function Cart() {
 
     const handleCheckoutRedirect = () => {
         if (!user) {
-          toast.info('You must add an account to checkout', {autoClose: 1900, pauseOnFocusLoss: false})
+          toast.info('Add an account to checkout', {autoClose: 1500, pauseOnFocusLoss: false})
           navigate('/login')
         }
       }

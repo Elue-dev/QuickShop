@@ -1,6 +1,6 @@
-import  './error404.scss'
 import { Link } from 'react-router-dom'
 import { HiOutlineEmojiSad } from 'react-icons/hi'
+import  './error404.scss'
 
 export default function () {
   return (

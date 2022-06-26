@@ -11,7 +11,6 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
-  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
   const { resetPassword } = useAuth()
 
@@ -26,7 +25,6 @@ export default function ForgotPassword() {
         setError('')
         setMessage('')
         await resetPassword(email)
-        setLoading(true)
         setEmail('')
         setMessage('Check your inbox for further instructions (Ensure to check spam folder).')
         window.setTimeout(() => {
@@ -52,7 +50,6 @@ export default function ForgotPassword() {
         }, 3000)
       }
     }
-    setLoading(false)
   }
 
   return (

@@ -23,17 +23,17 @@ export default function ProductDetails() {
 
     const handleAddItem = () => {
         addToCart(item)
-        toast.success('Item added to your cart', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success(`${item.name} was added to your cart`, {autoClose: 2000, pauseOnFocusLoss: false} )
     }
 
     const handleAddWishlist = () => {
         addToWishlist(item)
-        toast.success('Item added to your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success(`${item.name} was added to your wishlist`, {autoClose: 2000, pauseOnFocusLoss: false} )
     }
 
     const handleRemoveWishlist = (product) => {
         removeFromWishlist(product)
-        toast.success('Item removed from your wishlist', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success(`${product.name} was removed from your wishlist`, {autoClose: 2000, pauseOnFocusLoss: false} )
     }
 
     if (item.length === 0) {
