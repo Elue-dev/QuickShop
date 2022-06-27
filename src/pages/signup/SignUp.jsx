@@ -22,6 +22,8 @@ export default function SignUp() {
   const navigate = useNavigate()
   const [view, setView] = useState(false)
   const [view_, setView_] = useState(false)
+  const confirmPasswordRef = useRef(null)
+  const passwordRef = useRef(null)
 
   useEffect(() => {
     emailRef.current.focus()
@@ -118,21 +120,19 @@ export default function SignUp() {
 
   const handleShowPassword = () => {
     setView(!view)
-    const password = document.getElementById('password')
-    if (password.type === 'password') {
-      password.setAttribute('type', 'text')
+    if (passwordRef.current.type === 'password') {
+      passwordRef.current.setAttribute('type', 'text')
     } else {
-      password.setAttribute('type', 'password')
+      passwordRef.current.setAttribute('type', 'password')
     }
   }
 
   const handleShowConfirmPassword = () => {
     setView_(!view_)
-    const password = document.getElementById('confirmPassword')
-    if (password.type === 'password') {
-      password.setAttribute('type', 'text')
+    if (confirmPasswordRef.current.type === 'password') {
+      confirmPasswordRef.current.setAttribute('type', 'text')
     } else {
-      password.setAttribute('type', 'password')
+      confirmPasswordRef.current.setAttribute('type', 'password')
     }
   }
 
@@ -168,7 +168,7 @@ export default function SignUp() {
              value={password} 
              onChange={(e)=>setPassword(e.target.value)}
              required 
-             id='password'
+             ref={passwordRef}
              placeholder='At least 6 characters' />
               <span className='eye' onClick={handleShowPassword}>
               {view ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
@@ -179,7 +179,7 @@ export default function SignUp() {
             <input
              type="password"
              value={confirmPassword}
-             id='confirmPassword'
+             ref={confirmPasswordRef}
              onChange={(e)=>setConfirmPassword(e.target.value)}
              required
              />

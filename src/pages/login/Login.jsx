@@ -18,6 +18,7 @@ export default function Login() {
   const navigate = useNavigate()
   const { login } = useAuth()
   const [view, setView] = useState(false)
+  const passwordRef = useRef(null)
 
   useEffect(() => {
       emailRef.current.focus()
@@ -61,11 +62,10 @@ export default function Login() {
 
   const handleShowPassword = () => {
     setView(!view)
-    const password = document.getElementById('password')
-    if (password.type === 'password') {
-      password.setAttribute('type', 'text')
+    if (passwordRef.current.type === 'password') {
+      passwordRef.current.setAttribute('type', 'text')
     } else {
-      password.setAttribute('type', 'password')
+      passwordRef.current.setAttribute('type', 'password')
     }
   }
 
@@ -88,7 +88,7 @@ export default function Login() {
             <input 
               type="password"
               value={password} 
-              id='password'
+              ref={passwordRef}
               onChange={(e)=>setPassword(e.target.value)} 
               required
              />
