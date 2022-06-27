@@ -102,6 +102,12 @@ export default function SignUp() {
             setError('')
         }, 3500)
         }
+        if (err.message === 'Firebase: Error (auth/network-request-failed).') {
+          setError('Google sign in failed.')
+          window.setTimeout(() => {
+            setError('')
+        }, 3500)
+        }
     }
   }
   const handleFacebookSignIn = async () => {
@@ -115,6 +121,12 @@ export default function SignUp() {
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
           setError('Facebook sign in failed. (You exited the facebook sign in)')
+          window.setTimeout(() => {
+            setError('')
+        }, 3500)
+        }
+        if (err.message === 'Firebase: Error (auth/network-request-failed).') {
+          setError('Facebook sign in failed.c')
           window.setTimeout(() => {
             setError('')
         }, 3500)
