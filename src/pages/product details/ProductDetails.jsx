@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useStore } from '../../contexts/StoreContext'
 import { BiLoader } from 'react-icons/bi'
+import { FaOpencart } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './productDetails.scss'
@@ -76,7 +77,8 @@ export default function ProductDetails() {
                    <button onClick={() => handleRemoveWishlist(item)} className="btn buy_now">Remove from wishlist</button>
                 ) : (
                     <button onClick={handleAddWishlist} className="btn buy_now">Add to wishlist</button>
-                )}
+                )} <br />
+                <Link to='/cart' className='go_to_cart'>Go to cart <FaOpencart className='go_to_cart_icon' /></Link>
             </div>
         </div>
     </div>

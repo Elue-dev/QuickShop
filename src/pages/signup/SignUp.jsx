@@ -91,7 +91,7 @@ export default function SignUp() {
     try {
       await googleSignIn();
       navigate('/')
-      toast.success('Successfully logged in', {autoClose: 2000, pauseOnFocusLoss: false} )
+      toast.success('Google sign in successful', {autoClose: 2000, pauseOnFocusLoss: false} )
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
           setError('Google sign in failed. (You exited the google sign in)')
@@ -105,7 +105,7 @@ export default function SignUp() {
     try {
       await facebookSignIn();
       navigate('/')
-      toast.success('Successfully logged in', {autoClose: 1000, pauseOnFocusLoss: false} )
+      toast.success('Facebook sign in successful', {autoClose: 1000, pauseOnFocusLoss: false} )
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
           setError('Facebook sign in failed. (You exited the facebook sign in)')

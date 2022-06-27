@@ -57,7 +57,9 @@ export const AuthProvider = ({ children }) => {
         }    
     }, [])
 
-    const values = { user, signup, login, logout, resetPassword, googleSignIn, facebookSignIn }
+    const values = { user, signup, login, logout, 
+        resetPassword, googleSignIn, facebookSignIn
+     }
 
     return (
         <AuthContext.Provider value={values}>

@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function Products() {
 
     const { state: { cart }, products, setProducts, addToCart } = useStore()
-    const [term, seachTerm] = useState('')
+    const [term, setTerm] = useState('')
 
     useEffect(() => {
         const getProducts = async () => {
@@ -38,10 +38,9 @@ export default function Products() {
   return (
     <>
        <div className="input">
-        <p>.</p>
         <input type="search"
          value={term} 
-         onChange={(e)=> seachTerm(e.target.value)} 
+         onChange={(e)=> setTerm(e.target.value)} 
          placeholder='Search products...'
          className="search"
         />

@@ -83,6 +83,13 @@ img {
                 opacity: .3;
                 cursor: not-allowed;
             }
+            .go_to_cart {
+                font-size: 1.2rem;
+                font-weight: 700;
+                .go_to_cart_icon {
+                    margin-left: .4rem;
+                }
+            }
         }
     }
 
