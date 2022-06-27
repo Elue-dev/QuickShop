@@ -21,12 +21,17 @@ function App() {
             <Route exact path='/' element={<Home />} />
             <Route path='/:error' element={<Error404 />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/cart/:error' element={<Error404 />} />
             <Route path='/wishlist' element={<WishList />} />
+            <Route path='/wishlist/:error' element={<Error404 />} />
             <Route path='/product/:id' element={<ProductDetails />} />
             <Route path='/checkout' element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path='/login' element={<Login />} />
+            <Route path='/login/:error' element={<Error404 />} />
             <Route path='/signup' element={<SignUp />} />
+            <Route path='/signup/:error' element={<Error404 />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
+            <Route path='/forgot-password/:error' element={<Error404 />} />
           </Routes>
         </div>
       <Footer />

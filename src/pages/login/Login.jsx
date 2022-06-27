@@ -101,7 +101,7 @@ export default function Login() {
       <p className='forgot_password'>
         <Link to='/forgot-password'>Forgot password?</Link>
       </p>
-      <p className='get_account'>New to QuickShop? 
+      <p className='get_account'>New to Quick<span>Shop</span>? 
         <Link to='/signup' style={{ marginLeft: '.5rem '}}>Sign Up</Link>
       </p>
     </div>

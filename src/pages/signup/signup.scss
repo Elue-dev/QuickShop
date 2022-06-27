@@ -91,6 +91,9 @@
         }
     }
     .get_account {
+        span {
+            color: $mainColor;
+        }
         a {
             color: $mainColor;
             text-decoration: underline;

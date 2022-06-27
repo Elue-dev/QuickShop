@@ -91,7 +91,7 @@ export default function SignUp() {
     try {
       await googleSignIn();
       navigate('/')
-      toast.success('Google sign in successful', {
+      toast.success('Google sign in was successful', {
         autoClose: 5000, 
         pauseOnFocusLoss: false
       })
@@ -108,7 +108,7 @@ export default function SignUp() {
     try {
       await facebookSignIn();
       navigate('/')
-      toast.success('Facebook sign in successful', {
+      toast.success('Facebook sign in was successful', {
         autoClose: 5000, 
         pauseOnFocusLoss: false
       })
@@ -193,7 +193,7 @@ export default function SignUp() {
         <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
       </form>
       <p className='get_account'>
-        Have a QuickShop account? <Link to='/login'>Login</Link>
+        Have a Quick<span>Shop</span> account? <Link to='/login'>Login</Link>
       </p>
     </div>
   )

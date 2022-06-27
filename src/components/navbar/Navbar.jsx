@@ -25,7 +25,7 @@ export default function Navbar() {
             await logout()
             navigate('/')
             toast.success(`Successfully logged out ${user.email}`, {
-              autoClose: 1500, 
+              autoClose: 4000, 
               pauseOnFocusLoss: false
             })
         }  catch(err) {
