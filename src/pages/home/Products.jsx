@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useStore } from "../../contexts/StoreContext"
 import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 import { FaRegEye } from 'react-icons/fa'
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function Products() {
 
     const { state: { cart }, products, setProducts, addToCart } = useStore()
+    const [term, seachTerm] = useState('')
 
     useEffect(() => {
         const getProducts = async () => {
@@ -36,9 +37,25 @@ export default function Products() {
 
   return (
     <>
+       <div className="input">
+        <p>.</p>
+        <input type="search"
+         value={term} 
+         onChange={(e)=> seachTerm(e.target.value)} 
+         placeholder='Search products...'
+         className="search"
+        />
+       </div>
         <h1 className="heading">PRODUCTS</h1>
+       {term &&  <p className="search_filter">Products including <i>'{term}'</i></p>}
         <div className="products_data">
-            {products?.map(product => (
+            { products && products.filter(val => {
+                if (term === '') {
+                    return val
+                } else if (val.name.toLowerCase().includes(term.toLowerCase())) {
+                    return val
+                } 
+            }).map(product => (
                 <div className="products_card" key={product.id}>
                     <div className="products_details">
                         <div className="items_icon">

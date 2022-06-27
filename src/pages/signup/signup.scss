@@ -15,9 +15,9 @@
             font-size: 1.4rem;
         }
     }
-    .google_signin {
+    .oAuth_signin {
         padding-bottom: 1rem;
-        .g_signin {
+        .oAuth__signin {
             background: rgb(226, 224, 224);
             color: $mainColor;
             padding: .4rem 2rem;
@@ -31,13 +31,19 @@
             width: 500px;
             @include flexBox(center, center, row);
             gap: .6rem;
+            margin-bottom: 1rem;
             .google_icon {
                 font-size: 2rem;
+            }
+            .meta_icon {
+                font-size: 2rem;
+                color: #3388ff;
             }
         }
     }
     form {
         line-height: 2;
+        padding-top: 1.5rem;
         padding-bottom: 1.5rem;
         font-size: 1.3rem;
         label {
@@ -58,6 +64,11 @@
             &:hover, &:focus {
                 border-color: $mainColor;
             }
+        }
+        .eye {
+            font-size: 1.5rem;
+            color: $mainColor;
+            cursor: pointer;
         }
         .btn {
             background: $mainColor;

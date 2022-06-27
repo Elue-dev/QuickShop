@@ -3,6 +3,7 @@ import { auth } from '../firebase'
 import { 
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
+    FacebookAuthProvider,
     onAuthStateChanged,
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
@@ -40,6 +41,10 @@ export const AuthProvider = ({ children }) => {
         const googleAuthProvider = new GoogleAuthProvider()
         return signInWithPopup(auth, googleAuthProvider)
     }
+    const facebookSignIn = () => {
+        const facebookAuthProvider = new FacebookAuthProvider()
+        return signInWithPopup(auth, facebookAuthProvider)
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -52,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         }    
     }, [])
 
-    const values = { user, signup, login, logout, resetPassword, googleSignIn }
+    const values = { user, signup, login, logout, resetPassword, googleSignIn, facebookSignIn }
 
     return (
         <AuthContext.Provider value={values}>

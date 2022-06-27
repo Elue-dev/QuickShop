@@ -71,13 +71,24 @@ nav {
             right: 9rem;
             background: #fff;
             max-height: 150px;
-            max-width: 230px;
+            max-width: 100%;
             transition: .5s ease-in-out;
             box-shadow: 0 3px 8px rgba(0,0,0,.3);
             .auth_links {
                 padding: 1rem 1rem;
                 display: none;
                 line-height: 2;
+                position: relative;
+                .user_modal {
+                    padding-top: 1rem;
+                    .close_popup {
+                        position: absolute;
+                        top: 0.2rem;
+                        right: 0.3rem;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                    }
+                }
                 a {
                     color: $mainColor;
                 }

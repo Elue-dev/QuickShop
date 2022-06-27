@@ -37,6 +37,30 @@
     }
 
     // products styling
+    input {
+        @include flexBox(center, center, column);
+        @include wrapper();
+        padding: .3rem .9rem;
+        width: 40%;
+        margin-bottom: 2rem;
+        text-align: center;
+        border: 2px solid #333;
+        outline: 0;
+        font-size: 1.1rem;
+        border-radius: .5rem;
+        &:focus {
+            border-color: $mainColor;
+        }
+    }
+    .search_filter {
+        text-align: center;
+        padding-top: 1rem;
+        font-size: 1.1rem;
+        i {
+            font-weight: 700;
+            color: $mainColor;
+        }
+    }
     .heading {
         text-align: center;
         font-family: $headingFont;

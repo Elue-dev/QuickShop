@@ -13,7 +13,8 @@ export const StoreProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(StoreReducer, {
         cart: [],
-        wishlist: []
+        wishlist: [],
+        searchQuery: '',
     })
 
     const addToCart = (product) => {
@@ -62,9 +63,16 @@ export const StoreProvider = ({ children }) => {
         dispatch({ type: 'CLEAR_WISHLIST' })
     }
 
+    const getSearch = (value) => {
+        dispatch({
+            type: 'FILTER_BY_SEARCH',
+            payload: value
+          })
+    }
+
     const values = { 
         state, dispatch, products, setProducts , addToCart, removeFromCart, clearCart, 
-        addToWishlist, removeFromWishlist, clearWishlist, changeQuantity
+        addToWishlist, removeFromWishlist, clearWishlist, changeQuantity, getSearch
     }
 
     return (

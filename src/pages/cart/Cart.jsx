@@ -43,7 +43,8 @@ export default function Cart() {
         <h1 className='cart_title'>Your cart</h1>
         {!cart.length && <p className='cart_empty'>
             <TbBasketOff className='basket_empty' /> <br />
-            Your Quick<span>Shop</span> Cart is Empty <br /><Link to='/'>Start shopping</Link>
+            Your Quick<span>Shop</span> Cart is Empty <br />
+            <Link to='/'>Start shopping</Link>
           </p>
         }
         {cart.length ? (<hr />) : null}

@@ -5,6 +5,8 @@ import { useAuth } from '../../contexts/AuthContext'
 import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { BiLoader } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
+import { FaFacebook } from 'react-icons/fa'
+import { IoIosEye, IoMdEyeOff } from 'react-icons/io'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './signup.scss'
@@ -16,8 +18,10 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword]=  useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const { signup, googleSignIn } = useAuth()
+  const { signup, googleSignIn, facebookSignIn } = useAuth()
   const navigate = useNavigate()
+  const [view, setView] = useState(false)
+  const [view_, setView_] = useState(false)
 
   useEffect(() => {
     emailRef.current.focus()
@@ -97,18 +101,56 @@ export default function SignUp() {
         }
     }
   }
+  const handleFacebookSignIn = async () => {
+    try {
+      await facebookSignIn();
+      navigate('/')
+      toast.success('Successfully logged in', {autoClose: 1000, pauseOnFocusLoss: false} )
+    } catch(err) {
+        if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
+          setError('Facebook sign in failed. (You exited the facebook sign in)')
+          window.setTimeout(() => {
+            setError('')
+        }, 3500)
+        }
+    }
+  }
+
+  const handleShowPassword = () => {
+    setView(!view)
+    const password = document.getElementById('password')
+    if (password.type === 'password') {
+      password.setAttribute('type', 'text')
+    } else {
+      password.setAttribute('type', 'password')
+    }
+  }
+
+  const handleShowConfirmPassword = () => {
+    setView_(!view_)
+    const password = document.getElementById('confirmPassword')
+    if (password.type === 'password') {
+      password.setAttribute('type', 'text')
+    } else {
+      password.setAttribute('type', 'password')
+    }
+  }
 
   return (
     <div className='signup'>
       <h1>Create Account</h1>
       {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
-      <div className="google_signin">
-        {/* <div className='google'><GoogleButton className='google_signIn' onClick={handleGoogleSignIn} style={{ width: '500px', fontWeight: '700', fontSize: '1.3rem'}} /></div> */}
-        <button onClick={handleGoogleSignIn} className="btn g_signin">
+      <div className="oAuth_signin">
+        <button onClick={handleGoogleSignIn} className="btn oAuth__signin">
           <div><FcGoogle className='google_icon' /></div>
           <div>Continue with google</div>
         </button>
+        <button onClick={handleFacebookSignIn} className="btn oAuth__signin">
+          <div><FaFacebook className='meta_icon' /></div>
+          <div>Continue with facebook</div>
+        </button>
       </div>
+     0R
       <form onSubmit={handleSubmit}>
         <label>
           <span>Email:</span> <br />
@@ -126,16 +168,24 @@ export default function SignUp() {
              value={password} 
              onChange={(e)=>setPassword(e.target.value)}
              required 
+             id='password'
              placeholder='At least 6 characters' />
+              <span className='eye' onClick={handleShowPassword}>
+              {view ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
+             </span>
         </label> <br />
         <label>
           <span>Re-enter Password:</span> <br />
             <input
              type="password"
              value={confirmPassword}
+             id='confirmPassword'
              onChange={(e)=>setConfirmPassword(e.target.value)}
              required
              />
+             <span className='eye' onClick={handleShowConfirmPassword}>
+              {view_ ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
+             </span>
         </label> <br />
         <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
       </form>

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { BiLoader } from 'react-icons/bi'
+import { IoIosEye, IoMdEyeOff } from 'react-icons/io'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '../../contexts/AuthContext'
@@ -16,6 +17,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { login } = useAuth()
+  const [view, setView] = useState(false)
 
   useEffect(() => {
       emailRef.current.focus()
@@ -57,6 +59,16 @@ export default function Login() {
     setLoading(false)
 }
 
+  const handleShowPassword = () => {
+    setView(!view)
+    const password = document.getElementById('password')
+    if (password.type === 'password') {
+      password.setAttribute('type', 'text')
+    } else {
+      password.setAttribute('type', 'password')
+    }
+  }
+
   return (
     <div className='login'>
       <h1>Log In</h1>
@@ -76,9 +88,13 @@ export default function Login() {
             <input 
               type="password"
               value={password} 
+              id='password'
               onChange={(e)=>setPassword(e.target.value)} 
               required
              />
+             <span className='eye' onClick={handleShowPassword}>
+              {view ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
+             </span>
         </label> <br />
         <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
       </form>
@@ -86,7 +102,7 @@ export default function Login() {
         <Link to='/forgot-password'>Forgot password?</Link>
       </p>
       <p className='get_account'>New to QuickShop? 
-        <Link to='/signup'>Sign Up</Link>
+        <Link to='/signup' style={{ marginLeft: '.5rem '}}>Sign Up</Link>
       </p>
     </div>
   )

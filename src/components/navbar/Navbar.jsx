@@ -1,8 +1,8 @@
-
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillHeartFill } from 'react-icons/bs'
 import { ImCart } from 'react-icons/im'
+import { GrFormClose } from 'react-icons/gr'
 import { useStore } from '../../contexts/StoreContext'
 import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
@@ -54,15 +54,17 @@ export default function Navbar() {
             <div className='user_auth' onClick={()=>setShowAuth(false)}>
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>
                 {user ? (
-                  <>
+                  <div className='user_modal'>
                     <p>Hi, <b>{user.email}</b></p><br />
                     <p className='logout' onClick={handleLogout}>Logout</p>
-                  </>
+                    <p><GrFormClose className='close_popup' /></p>
+                  </div>
                 ) : (
-                  <>
+                  <div className='user_modal'>
                     <Link to='/login'>Login</Link><br />
                     <Link to='/signup'>Sign Up</Link>
-                  </>
+                    <GrFormClose className='close_popup' />
+                  </div>
                 )}
               </div>
             </div>

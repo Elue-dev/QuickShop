@@ -15,6 +15,10 @@ export const StoreReducer = (state, action) => {
             return  { ...state, wishlist: state.wishlist.filter(i => i.id !== action.payload.id) }
         case 'CLEAR_WISHLIST':
             return { ...state, wishlist: []}
+        case 'FILTER_BY_SEARCH':
+            return {...state, searchQuery: action.payload}
+        case 'SORT_BY_PRICE':
+            return {...state, sort: action.payload}
         default:
             return state
     }

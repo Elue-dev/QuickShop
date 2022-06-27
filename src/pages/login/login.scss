@@ -35,6 +35,11 @@
                 border-color: $mainColor;
             }
         }
+        .eye {
+            font-size: 1.5rem;
+            color: $mainColor;
+            cursor: pointer;
+        }
         .btn {
             background: $mainColor;
             color: #fff;

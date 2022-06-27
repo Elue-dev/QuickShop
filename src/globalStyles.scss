@@ -21,8 +21,18 @@ $headingFont: 'Permanent Marker', cursive;
 
 @mixin mQ($respond) {
     @media (max-width: $respond) {
-        @content
+        @content;
     }
+}
+
+@mixin keyframes($name) {
+    @keyframes #{name} {
+        @content;
+    }
+}
+
+@mixin animate($animation,$duration,$method,$times){
+    animation: $animation $duration $method $times;
 }
 
 .alert {
@@ -116,6 +126,9 @@ $headingFont: 'Permanent Marker', cursive;
     .navbar .nav_links .user_auth {
         right: 4rem;
     }
+    .home input  {
+        width: 75%;
+    }
 }
 
 @include mQ(420px) {
@@ -205,7 +218,7 @@ $headingFont: 'Permanent Marker', cursive;
     .login form input, .signup form input {
         width: 320px;
     }
-    .signup .google_signin .g_signin {
+    .signup .oAuth_signin .oAuth__signin {
         padding: 0.1rem 2rem;
         font-size: 1.2rem;
         width: 100%;
@@ -274,6 +287,9 @@ $headingFont: 'Permanent Marker', cursive;
     }
     .wishlist .wishlist_empty p {
         font-size: 1rem;
+    }
+    .home input {
+        width: 90%;
     }
 }
 
@@ -360,5 +376,8 @@ $headingFont: 'Permanent Marker', cursive;
     }
     .product_details .details_row .details_texts .buy_now {
         padding: 0.4rem 0.5rem;
+    }
+    .home input {
+        width: 80%;
     }
 }
