@@ -1,1 +1,1 @@
-Visit the live application at: https://quickshopapp.netlify.appcd
+Visit the live application at: https://quickshopapp.netlify.app
