@@ -24,8 +24,8 @@ export default function Navbar() {
         try {
             await logout()
             navigate('/')
-            toast.success('Successfully logged out', {
-              autoClose: 1000, 
+            toast.success(`Successfully logged out ${user.email}`, {
+              autoClose: 1500, 
               pauseOnFocusLoss: false
             })
         }  catch(err) {
@@ -61,8 +61,8 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <div className='user_modal'>
-                    <Link to='/login'>Login</Link><br />
-                    <Link to='/signup'>Sign Up</Link>
+                    <Link to='/login'><b>Login</b></Link><br />
+                    <Link to='/signup'><b>Sign Up</b></Link>
                     <GrFormClose className='close_popup' />
                   </div>
                 )}
