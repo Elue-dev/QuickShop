@@ -16,14 +16,6 @@ export default function RelatedProducts() {
         relatedProducts()
     },[])
 
-    if (related.length === 0) {
-        return(
-            <div className='spinner related_spinner'>
-             <BiLoader />
-            </div>
-        ) 
-    }
-
   return (
     <div className='related_products'>
         <h1 className="heading">Recommended for you</h1>
