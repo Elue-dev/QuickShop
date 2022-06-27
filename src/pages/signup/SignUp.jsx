@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react'
+import { useState } from 'react'
 import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
@@ -24,11 +24,6 @@ export default function SignUp() {
   const [view_, setView_] = useState(false)
   const confirmPasswordRef = useRef(null)
   const passwordRef = useRef(null)
-
-  useEffect(() => {
-    emailRef.current.focus()
-}, [])
-
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -56,7 +51,10 @@ export default function SignUp() {
       setEmail('')
       setPassword('')
       setConfirmPassword('')
-      toast.success('Successfully signed up', {autoClose: 3000, pauseOnFocusLoss: false})
+      toast.success('Successfully signed up', {
+        autoClose: 5000, 
+        pauseOnFocusLoss: false
+      })
       navigate('/')
       setLoading(false)
     } catch(err) {
@@ -64,7 +62,7 @@ export default function SignUp() {
           setError('Email already in use')
           window.setTimeout(() => {
             setError('')
-        }, 3000)
+        }, 5000)
         }
         if (err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
           setError('Password should be at least 6 characters')
@@ -76,13 +74,13 @@ export default function SignUp() {
           setError('Invalid email')
           window.setTimeout(() => {
             setError('')
-        }, 3000)
+        }, 5000)
         }
         if (err.message === 'Firebase: Error (auth/network-request-failed).') {
           setError('Please check your internet connection')
           window.setTimeout(() => {
             setError('')
-        }, 3000)
+        }, 5000)
         }
      }
 
@@ -93,7 +91,10 @@ export default function SignUp() {
     try {
       await googleSignIn();
       navigate('/')
-      toast.success('Google sign in successful', {autoClose: 2000, pauseOnFocusLoss: false} )
+      toast.success('Google sign in successful', {
+        autoClose: 5000, 
+        pauseOnFocusLoss: false
+      })
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
           setError('Google sign in failed. (You exited the google sign in)')
@@ -107,7 +108,10 @@ export default function SignUp() {
     try {
       await facebookSignIn();
       navigate('/')
-      toast.success('Facebook sign in successful', {autoClose: 1000, pauseOnFocusLoss: false} )
+      toast.success('Facebook sign in successful', {
+        autoClose: 5000, 
+        pauseOnFocusLoss: false
+      })
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/popup-closed-by-user).') {
           setError('Facebook sign in failed. (You exited the facebook sign in)')
@@ -157,7 +161,6 @@ export default function SignUp() {
             <input
              type="email"
              value={email}
-             ref={emailRef}
              onChange={(e)=>setEmail(e.target.value)} 
              required 
             />

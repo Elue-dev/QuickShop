@@ -36,7 +36,7 @@ export default function Login() {
         setPassword('')
         navigate('/')
         setLoading(false)
-        toast.success('Successfully logged in', {autoClose: 3000, pauseOnFocusLoss: false})
+        toast.success('Successfully logged in', {autoClose: 4000, pauseOnFocusLoss: false})
     } catch (err){
         if (err.message === 'Firebase: Error (auth/user-not-found).') {
             setError('User not found')

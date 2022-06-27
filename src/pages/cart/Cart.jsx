@@ -23,17 +23,26 @@ export default function Cart() {
 
     const handleRemoveItem = (product) => {
         removeFromCart(product)
-        toast.success(`${product.name} was removed from your cart`, {autoClose: 2000, pauseOnFocusLoss: false} )
+        toast.success(`${product.name} was removed from your cart`, {
+            autoClose: 4000, 
+            pauseOnFocusLoss: false
+        })
     }
 
     const handleClearCart  = () => {
         clearCart()
-        toast.success('Cart cleared', {autoClose: 1000, pauseOnFocusLoss: false} )
+        toast.success('Cart cleared', {
+            autoClose: 4000, 
+            pauseOnFocusLoss: false
+        })
     }
 
     const handleCheckoutRedirect = () => {
         if (!user) {
-          toast.info('Add an account to checkout', {autoClose: 1500, pauseOnFocusLoss: false})
+          toast.info('Add an account to checkout', {
+            autoClose: 4000, 
+            pauseOnFocusLoss: false
+        })
           navigate('/login')
         }
       }

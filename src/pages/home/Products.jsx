@@ -24,7 +24,10 @@ export default function Products() {
 
     const handleAddToCart = (product) => {
         addToCart(product)
-        toast.success(`${product.name} added to your cart`, {autoClose: 2000, pauseOnFocusLoss: false} )
+        toast.success(`${product.name} added to your cart`, {
+            autoClose: 4000, 
+            pauseOnFocusLoss: false
+        })
     }
 
     if (products.length === 0) {

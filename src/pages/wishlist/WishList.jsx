@@ -14,7 +14,7 @@ export default function WishList() {
   const handleRemoveWish = (item) => {
     removeFromWishlist(item)
     toast.success(`${item.name} was removed from your wishlist`, {
-      autoClose: 2000, 
+      autoClose: 4000, 
       pauseOnFocusLoss: false
     })
   }
