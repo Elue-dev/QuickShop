@@ -1,8 +1,9 @@
 import { useStore } from '../../contexts/StoreContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineClose  } from 'react-icons/ai'
 import { IoHeartDislikeSharp } from 'react-icons/io5'
 import { FaEye } from 'react-icons/fa'
+import { MdBackspace } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import RelatedProducts from './RelatedProducts'
@@ -10,6 +11,7 @@ import './wishList.scss'
 
 export default function WishList() {
   const { state: {wishlist}, removeFromWishlist } = useStore()
+  const navigate = useNavigate()
   
   const handleRemoveWish = (item) => {
     removeFromWishlist(item)
@@ -21,6 +23,9 @@ export default function WishList() {
 
   return (
     <div className='wishlist'>
+       <p>
+         <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
+      </p>
       <h1 className='wishlist_title'>Your wishlist</h1>
       {!wishlist.length && <p className='wishlist_empty'>
         <IoHeartDislikeSharp className='wish_empty' />

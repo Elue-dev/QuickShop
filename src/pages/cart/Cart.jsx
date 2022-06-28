@@ -5,6 +5,7 @@ import { MdDelete  } from 'react-icons/md'
 import { ImPriceTags } from 'react-icons/im'
 import { BsFillBasket3Fill } from 'react-icons/bs'
 import { TbBasketOff } from 'react-icons/tb'
+import { MdBackspace } from 'react-icons/md'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -49,6 +50,9 @@ export default function Cart() {
 
   return (
     <div className='cart'>
+        <p style={{ paddingTop: '2rem'}}>
+            <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
+        </p>
         <h1 className='cart_title'>Your cart</h1>
         {!cart.length && <p className='cart_empty'>
             <TbBasketOff className='basket_empty' /> <br />

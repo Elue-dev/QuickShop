@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { HiOutlineEmojiSad } from 'react-icons/hi'
 import  './error404.scss'
 
-export default function () {
+export default function Error404() {
   return (
     <div  className='error_page'>
         <p className="error_icon"><HiOutlineEmojiSad /></p>

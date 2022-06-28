@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillHeartFill } from 'react-icons/bs'
 import { ImCart } from 'react-icons/im'
+import { MdSpaceDashboard } from 'react-icons/md'
 import { GrFormClose } from 'react-icons/gr'
 import { useStore } from '../../contexts/StoreContext'
 import { useState } from 'react'
@@ -55,7 +56,11 @@ export default function Navbar() {
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>
                 {user ? (
                   <div className='user_modal'>
-                    <p>Hi, <b>{user.email}</b></p><br />
+                    <p style={{ marginTop: '.4rem' }}>Hi, <b>{user.email}</b></p>
+                    <Link to='/dashboard' className='link_dashboard'> 
+                      <MdSpaceDashboard />
+                      View dashboard
+                    </Link> <br /><br />
                     <p className='logout' onClick={handleLogout}>Logout</p>
                     <p><GrFormClose className='close_popup' /></p>
                   </div>

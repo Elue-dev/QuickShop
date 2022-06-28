@@ -81,12 +81,16 @@ nav {
                 position: relative;
                 .user_modal {
                     padding-top: 1rem;
+                    display: initial;
                     .close_popup {
                         position: absolute;
                         top: 0.2rem;
-                        right: 0.3rem;
+                        right: 0;
                         font-size: 1.5rem;
                         cursor: pointer;
+                    }
+                    .link_dashboard {
+                        font-weight: 700;
                     }
                 }
                 a {
@@ -103,6 +107,7 @@ nav {
                     outline: 0;
                     font-weight: 700;
                     text-align: center;
+                    margin-bottom: 1.5rem;
                 }
             }
             .auth_links.show {

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '../../contexts/StoreContext'
 import { BiLoader } from 'react-icons/bi'
 import { FaOpencart } from 'react-icons/fa'
+import { MdBackspace } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './productDetails.scss'
@@ -10,6 +11,7 @@ import './productDetails.scss'
 export default function ProductDetails() {
     const { id } = useParams()
     const [ item, setItem ] = useState([])
+    const navigate = useNavigate()
     const { state: { cart, wishlist }, addToCart, addToWishlist, removeFromWishlist} = useStore()
 
     useEffect(() => {
@@ -56,6 +58,9 @@ export default function ProductDetails() {
 
   return (
     <div className='product_details'>
+        <p className='back det_back' onClick={()=>navigate(-1)}>
+            <MdBackspace />
+        </p>
         <h1>Product Detail</h1>
         <div className="details_row">
             <div className="product_detail_container">

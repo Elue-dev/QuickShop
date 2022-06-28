@@ -1,0 +1,107 @@
+@import '../../globalStyles.scss';
+
+.dashboard {
+    @include wrapper();
+    margin: auto;
+    padding-top: 3rem;
+    @include mQ(380px) {
+        padding-bottom: 4rem;
+    }
+    h1 {
+        font-family: $headingFont;
+        padding: 2rem 0;
+        @include mQ(380px) {
+            padding-top: 1rem
+        }
+    }
+    .dashboard_header {
+        @include flexBox(left, center, row);
+        gap: .4rem;
+        @include mQ(420px) {
+            align-items: initial;
+            flex-direction: column;
+            padding-bottom: 2rem;
+            }
+        span {
+            color: $mainColor;
+        }
+        .dashboard_icon {
+            font-size: 3rem;
+            color: $mainColor;
+        }
+    }
+    .wishlist_details {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        p {
+            @include flexBox(left, center, row);
+            gap: .4rem;
+        }
+        .wishlist_count {
+            margin-bottom: .5rem;
+            margin-left: 1rem;
+        }
+        .dash_wish {
+            color: $mainColor;
+        }
+        .dash_icon {
+            color: $mainColor;
+            font-size: 1.5rem;
+        }
+        .dashboard_products {
+            margin-left: 1rem;
+            li {
+                font-weight: 700;
+            }
+        }
+    }
+    .cart_details {
+        .dash_icon {
+            color: $mainColor;
+            font-size: 1.5rem;
+        }
+        p {
+            @include flexBox(left, center, row);
+            gap: .4rem;
+        }
+        .dash_cart {
+            @include flexBox(left, center, row);
+            gap: .7rem;
+            color: $mainColor;
+        }
+        .cart_count {
+            margin-bottom: .5rem;
+            margin-left: 1rem;
+        }
+    }
+    .dashboard_products {
+        margin-left: 1rem;
+        li {
+            font-weight: 700;
+        }
+    }
+    .dashboard_btn {
+        padding: .6rem 1rem;
+        border-radius: .5rem;
+        border: 0;
+        outline: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: inline-block;
+        margin-top: 1rem;
+        margin-right: .5rem;
+        cursor: pointer;
+        a {
+            color: #fff;
+        }
+    }
+    .shop_btn {
+        background: $mainColor;
+        color: #fff;
+    }
+    .logout_btn {
+        border: 1.5px solid $mainColor;
+        background: #fff;
+        color: $mainColor;
+    }
+}

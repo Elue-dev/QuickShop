@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 import { useStore } from '../../contexts/StoreContext'
+import { MdBackspace } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
@@ -10,6 +12,7 @@ export default function Checkout() {
   const { user } = useAuth()
   const { state: { cart }, products, clearCart } = useStore()
   const [total, setTotal] = useState(null)
+  const navigate = useNavigate()
 
   const config = {
     public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY,
@@ -41,6 +44,9 @@ export default function Checkout() {
 
   return (
     <div className='checkout'>
+       <p style={{ paddingTop: '2rem'}}>
+          <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
+      </p>
       {cart.length ? (
         <>
           <h1 className="heading">Confirm your order</h1>

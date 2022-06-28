@@ -281,6 +281,9 @@ $headingFont: 'Permanent Marker', cursive;
     .home input {
         width: 90%;
     }
+    .cart_back, .det_back {
+        margin-left: 1rem;
+    }
 }
 
 @include mQ(380px) {

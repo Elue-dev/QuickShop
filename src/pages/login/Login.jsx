@@ -34,7 +34,7 @@ export default function Login() {
         await login(email, password)
         setEmail('')
         setPassword('')
-        navigate('/')
+        navigate('/dashboard')
         setLoading(false)
         toast.success('Successfully logged in', {autoClose: 4000, pauseOnFocusLoss: false})
     } catch (err){

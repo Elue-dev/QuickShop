@@ -49,3 +49,12 @@ a {
   transform: translate(-50%, -50%);
   font-size: 3rem;
 }
+.back {
+  color: #bb5353;
+  cursor: pointer;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: .2rem;
+}

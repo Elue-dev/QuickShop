@@ -12,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import './signup.scss'
 
 export default function SignUp() {
-  const emailRef = useRef()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword]=  useState('')
@@ -55,7 +54,7 @@ export default function SignUp() {
         autoClose: 5000, 
         pauseOnFocusLoss: false
       })
-      navigate('/')
+      navigate('/dashboard')
       setLoading(false)
     } catch(err) {
         if (err.message === 'Firebase: Error (auth/email-already-in-use).') {
@@ -90,7 +89,7 @@ export default function SignUp() {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      navigate('/')
+      navigate('/dashboard')
       toast.success('Google sign in was successful', {
         autoClose: 5000, 
         pauseOnFocusLoss: false
@@ -113,7 +112,7 @@ export default function SignUp() {
   const handleFacebookSignIn = async () => {
     try {
       await facebookSignIn();
-      navigate('/')
+      navigate('/dashboard')
       toast.success('Facebook sign in was successful', {
         autoClose: 5000, 
         pauseOnFocusLoss: false

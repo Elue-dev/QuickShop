@@ -11,6 +11,7 @@ import Checkout from './pages/checkout/Checkout';
 import ProtectedRoute from './components/protected route/ProtectedRoute';
 import WishList from './pages/wishlist/WishList';
 import Error404 from './pages/error404/Error404'
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/signup/:error' element={<Error404 />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='/forgot-password/:error' element={<Error404 />} />
+            <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           </Routes>
         </div>
       <Footer />
