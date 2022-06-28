@@ -12,6 +12,9 @@ img {
         text-align: center;
         padding-bottom: 2rem;
     }
+    .desc_link {
+        padding-bottom: 2rem
+    }
     .details_row {
         @include grid(repeat(2, 1fr));
         padding: 0 10rem;

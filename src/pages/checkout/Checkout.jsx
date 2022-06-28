@@ -20,7 +20,7 @@ export default function Checkout() {
     amount: products.price,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
-    redirect_url: "https://quickshopapp.netlify.app",
+    redirect_url: "https://quickshopapp.netlify.app/",
     customer: {
       email: user.email,
     },
@@ -60,12 +60,11 @@ export default function Checkout() {
               <p>Price</p>
           </div>
           {cart.map(product => (
-            <div>
-    
+            <div key={product.id}>
               <div className="details_grid">
                 <img src={product.preview} alt={product.name} />
                 <p>{product.name}</p>
-                <p>NGN {product.price - 349}</p>
+                <p><b>NGN</b> {product.price - 349}</p>
               </div>
               <hr /> <br />
             </div>

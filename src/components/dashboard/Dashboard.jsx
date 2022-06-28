@@ -58,7 +58,7 @@ export default function Dashboard() {
                     <p className='prod_details'>They include:</p>
                     <div>
                         {wishlist.map(product => (
-                            <li>{product.name}</li>
+                            <li key={product.id}>{product.name}</li>
                         ))}
                     </div>
                 </div>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                     <p className='prod_details'>They include:</p>
                     <div>
                         {cart.map(product => (
-                            <li>{product.name}</li>
+                            <li key={product.id}>{product.name}</li>
                         ))}
                     </div>
                     <p className='dash_checkout'>Ready to checkout {cart.length === 1 ? ('this product') : ('these products')}? <Link to='/checkout' className='start'>Start now</Link></p>

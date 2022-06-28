@@ -179,6 +179,8 @@ $headingFont: 'Permanent Marker', cursive;
         font-size: .9rem;
         :nth-child(2), :last-child {
             padding-top: .5rem;
+            max-width: 7rem;
+            font-weight: 600;
         }
         img {
             width: 77px;
@@ -189,8 +191,9 @@ $headingFont: 'Permanent Marker', cursive;
     .checkout div .details_grid {
         :first-child {
             width: 90px;
-            height: 60px;
+            height: 80px;
             border-radius: 0.5rem;
+            font-weight: 600;
         }
     }
     .checkout .heading_grid {

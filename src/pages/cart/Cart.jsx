@@ -65,8 +65,8 @@ export default function Cart() {
         }
         {cart.length ? (<hr />) : null}
         {cart?.map(item => (
-            <>
-                <div className="cart_item" key={item.id}>
+            <div key={item.id}>
+                <div className="cart_item">
                     <div className="item_image">
                         <Link to={`/product/${item.id}`}>
                             <img src={item.preview} alt={item.name} />
@@ -98,7 +98,7 @@ export default function Cart() {
                     </button>
                 </div>
                 <hr /><hr />
-            </>
+            </div>
         ))}
         {cart.length > 1 ? (
             <div className='clear_cart_row'>
