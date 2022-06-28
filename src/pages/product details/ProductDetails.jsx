@@ -61,6 +61,9 @@ export default function ProductDetails() {
         <p className='back det_back' onClick={()=>navigate(-1)}>
             <MdBackspace />
         </p>
+        <div className='page_desc'>
+        <p><Link to='/'>Home</Link> / <span>Product detail</span></p>
+      </div>
         <h1>Product Detail</h1>
         <div className="details_row">
             <div className="product_detail_container">

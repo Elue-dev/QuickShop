@@ -33,14 +33,21 @@ $headingFont: 'Permanent Marker', cursive;
     font-weight: 700;
     margin-bottom: 1rem;
 }
-
 .error {
     background: crimson;
 }
-
 .message {
     background: rgb(125, 194, 22);
 }
+.page_desc {
+    padding-top: 1rem;
+    a {
+        color: #777;
+    }
+     span {
+         color: $mainColor;
+     }
+ }
 
 @include mQ(1280px) {
     .product_details {
@@ -291,6 +298,13 @@ $headingFont: 'Permanent Marker', cursive;
     .dashboard .dashboard_btn {
         padding: 0.45em 0.8rem;
         font-size: 1rem;
+    }
+    .wishlist .clear_wishlist button {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+    .page_desc {
+        padding-left: 1rem;
     }
 }
 

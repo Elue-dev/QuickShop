@@ -36,6 +36,9 @@ export default function Dashboard() {
         <p>
            <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
         </p>
+        <div className='page_desc'>
+        <p><Link to='/'>Home</Link> / <span>Dashboard</span></p>
+      </div>
         <h1 className="heading">YOUR DASHBOARD</h1>
         <p className='dashboard_header'>
             <MdSpaceDashboard className='dashboard_icon' />
@@ -79,6 +82,7 @@ export default function Dashboard() {
                             <li>{product.name}</li>
                         ))}
                     </div>
+                    <p className='dash_checkout'>Ready to checkout {cart.length === 1 ? ('this product') : ('these products')}? <Link to='/checkout' className='start'>Start now</Link></p>
                 </div>
         ) : (null)}
         <button className="dashboard_btn shop_btn"><Link to='/'>Keep shopping</Link></button>

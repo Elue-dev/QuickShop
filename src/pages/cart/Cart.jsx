@@ -53,6 +53,9 @@ export default function Cart() {
         <p style={{ paddingTop: '2rem'}}>
             <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
         </p>
+        <div className='page_desc'>
+        <p><Link to='/'>Home</Link> / <span>Cart</span></p>
+      </div>
         <h1 className='cart_title'>Your cart</h1>
         {!cart.length && <p className='cart_empty'>
             <TbBasketOff className='basket_empty' /> <br />

@@ -10,7 +10,7 @@ import RelatedProducts from './RelatedProducts'
 import './wishList.scss'
 
 export default function WishList() {
-  const { state: {wishlist}, removeFromWishlist } = useStore()
+  const { state: {wishlist}, removeFromWishlist, clearWishlist } = useStore()
   const navigate = useNavigate()
   
   const handleRemoveWish = (item) => {
@@ -21,11 +21,22 @@ export default function WishList() {
     })
   }
 
+  const handleClearWishlist  = () => {
+    clearWishlist()
+    toast.success('Wishlist cleared', {
+        autoClose: 4000, 
+        pauseOnFocusLoss: false
+    })
+  }
+
   return (
     <div className='wishlist'>
        <p>
          <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
       </p>
+      <div className='page_desc'>
+        <p><Link to='/'>Home</Link> / <span>Wishlist</span></p>
+      </div>
       <h1 className='wishlist_title'>Your wishlist</h1>
       {!wishlist.length && <p className='wishlist_empty'>
         <IoHeartDislikeSharp className='wish_empty' />
@@ -54,6 +65,12 @@ export default function WishList() {
           <hr /><hr />
         </>
       ))}
+      {wishlist.length > 1 ? (
+        <div className='clear_wishlist'>
+          <p>.</p>
+          <button onClick={handleClearWishlist}>Clear wishlist</button>
+        </div>
+      ) : null}
       <RelatedProducts  />
     </div>
   )

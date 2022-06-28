@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 import { useStore } from '../../contexts/StoreContext'
 import { MdBackspace } from 'react-icons/md'
@@ -47,6 +47,9 @@ export default function Checkout() {
        <p style={{ paddingTop: '2rem'}}>
           <MdBackspace className='back cart_back' onClick={()=>navigate(-1)} />
       </p>
+      <div className='page_desc'>
+        <p><Link to='/'>Home</Link> / <span>Checkout</span></p>
+      </div>
       {cart.length ? (
         <>
           <h1 className="heading">Confirm your order</h1>

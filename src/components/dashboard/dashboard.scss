@@ -4,6 +4,7 @@
     @include wrapper();
     margin: auto;
     padding-top: 3rem;
+    padding-bottom: 3rem;
     @include mQ(380px) {
         padding-bottom: 4rem;
     }
@@ -76,8 +77,16 @@
     }
     .dashboard_products {
         margin-left: 1rem;
+        padding-bottom: 1rem;
         li {
             font-weight: 700;
+            padding-top: 1rem;
+        }
+        .dash_checkout {
+            padding-top: 1rem;
+            a {
+                color: $mainColor;
+            }
         }
     }
     .dashboard_btn {
