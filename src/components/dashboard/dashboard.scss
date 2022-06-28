@@ -91,6 +91,10 @@
         margin-top: 1rem;
         margin-right: .5rem;
         cursor: pointer;
+        @include mQ(420px) {
+            padding: .3rem .8rem;
+            font-size: 1rem;
+        }
         a {
             color: #fff;
         }
@@ -98,6 +102,7 @@
     .shop_btn {
         background: $mainColor;
         color: #fff;
+        border: 1.5px solid $mainColor;
     }
     .logout_btn {
         border: 1.5px solid $mainColor;

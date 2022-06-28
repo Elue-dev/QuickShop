@@ -284,6 +284,14 @@ $headingFont: 'Permanent Marker', cursive;
     .cart_back, .det_back {
         margin-left: 1rem;
     }
+    .dashboard .dashboard_products {
+        margin-left: 1rem;
+        padding-bottom: 1rem;
+    }
+    .dashboard .dashboard_btn {
+        padding: 0.45em 0.8rem;
+        font-size: 1rem;
+    }
 }
 
 @include mQ(380px) {
