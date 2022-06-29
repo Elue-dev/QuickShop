@@ -1,10 +1,84 @@
+import { useState } from 'react'
+import { AiFillGithub, AiFillLinkedin , AiFillTwitterCircle} from 'react-icons/ai'
+import { BiMessageAltError, BiMessageAltCheck, BiLoader, BiWinkSmile } from 'react-icons/bi'
+import { database } from '../../firebase'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import './footer.scss'
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    
+    try {
+      if (email === '') {
+        setError('Please enter your email')
+        window.setTimeout(() => {
+          setError('')
+      }, 3000)
+        return
+      }
+
+      setLoading(true)
+
+      const colRef = collection(database, 'emails')
+      await addDoc(colRef, {
+        email,
+        time: serverTimestamp()
+      })
+      setLoading(false)
+      setMessage('You successfully registered to our newsletter!')
+      window.setTimeout(() => {
+        setMessage('')
+    }, 4000)
+      setEmail('')
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <footer className='footer flex-grow'>
-      <div>
-        <p>&copy; 2022. Developed by Wisdom Elue</p>
+      <div className="footer_container">
+        <div>
+          <h2>Quick<span>Shop</span></h2>
+          <i>Get your favourite products...</i>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <p className="subscribe">Subscribe to our newsletter</p>
+          {error && <p className='newsletter_error'>
+            <BiMessageAltError className='news_icon' />{error}
+          </p>
+          }
+          {message && <p className='newsletter_message'>
+            <BiMessageAltCheck className='news_icon_' />{message} <BiWinkSmile className='news_icon_' />
+          </p>
+          }
+          <input 
+            type="email" 
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
+            placeholder='Enter your email' 
+           />
+          <button type='sumbit'>{loading ? <BiLoader /> : 'Submit'}</button>
+        </form>
+        <div className="social_icons">
+          <ul>
+            <li><a href='https://github.com/Elue-Dev'><AiFillGithub /></a></li>
+            <li><a href='https://www.linkedin.com/in/elue-wisdom-dubem-8822a5188'><AiFillLinkedin /></a></li>
+            <li><a href='https://twitter.com/eluewisdom_'><AiFillTwitterCircle /></a></li>
+          </ul>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div className="line">
+      <hr /><br />
+      <p className='copyright'>&copy; 2022. Developed by Wisdom Elue</p>
       </div>
     </footer>
   )

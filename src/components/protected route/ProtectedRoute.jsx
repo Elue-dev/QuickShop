@@ -10,10 +10,6 @@ export default function ProtectedRoute({ children }) {
     if (!user) {
         return <Navigate to ='/signup' />
     }
-
-    if (!cart.length) {
-        return <Navigate to ='/' />
-    }
-
+    
     return children
 }

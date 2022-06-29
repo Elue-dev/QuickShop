@@ -2,6 +2,7 @@
 
 .login {
     padding-top: 5rem;
+    padding-bottom: 5rem;
     @include flexBox(center, center, column);
     h1 {
         font-family: $headingFont;

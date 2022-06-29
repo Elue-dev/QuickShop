@@ -76,7 +76,7 @@ export default function Dashboard() {
         </div>
         {cart.length ? (
                 <div className='dashboard_products'>
-                    <p className='prod_details'>They include:</p>
+                    <p className='prod_details'>{cart.length === 1 ? 'Details are:' : 'They include:'}</p>
                     <div>
                         {cart.map(product => (
                             <li key={product.id}>{product.name}</li>
