@@ -12,7 +12,6 @@ import ProtectedRoute from './components/protected route/ProtectedRoute';
 import WishList from './pages/wishlist/WishList';
 import Error404 from './pages/error404/Error404'
 import Dashboard from './components/dashboard/Dashboard';
-import Success from './pages/success/Success';
 
 function App() {
   return (
@@ -21,21 +20,15 @@ function App() {
         <div className="App">
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route path='/:error' element={<Error404 />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/cart/:error' element={<Error404 />} />
             <Route path='/wishlist' element={<WishList />} />
-            <Route path='/wishlist/:error' element={<Error404 />} />
             <Route path='/product/:id' element={<ProductDetails />} />
             <Route path='/checkout' element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path='/login' element={<Login />} />
-            <Route path='/login/:error' element={<Error404 />} />
             <Route path='/signup' element={<SignUp />} />
-            <Route path='/signup/:error' element={<Error404 />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
-            <Route path='/forgot-password/:error' element={<Error404 />} />
             <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path='/success/:id' element={<ProtectedRoute><Success /></ProtectedRoute>} />
+            <Route path='*' element={<Error404 />} />
           </Routes>
         </div>
       <Footer />

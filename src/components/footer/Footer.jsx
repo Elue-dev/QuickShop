@@ -6,7 +6,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import './footer.scss'
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
+  const [mail, setMail] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -15,7 +15,7 @@ export default function Footer() {
     e.preventDefault()
     
     try {
-      if (email === '') {
+      if (mail === '') {
         setError('Please enter your email')
         window.setTimeout(() => {
           setError('')
@@ -27,7 +27,7 @@ export default function Footer() {
 
       const colRef = collection(database, 'emails')
       await addDoc(colRef, {
-        email,
+        mail,
         time: serverTimestamp()
       })
       setLoading(false)
@@ -35,7 +35,7 @@ export default function Footer() {
       window.setTimeout(() => {
         setMessage('')
     }, 4000)
-      setEmail('')
+        setMail('')
     } catch (err) {
       console.log(err.message)
     }
@@ -60,8 +60,8 @@ export default function Footer() {
           }
           <input 
             type="email" 
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
+            value={mail}
+            onChange={(e)=>setMail(e.target.value)}
             placeholder='Enter your email' 
            />
           <button type='sumbit'>{loading ? <BiLoader /> : 'Submit'}</button>

@@ -3,10 +3,8 @@
 .error_page {
     @include wrapper();
     text-align: center;
-    position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    padding-top: 4rem;
+    padding-bottom: 6rem;
     .error_top {
         font-size: 4rem;
     }
