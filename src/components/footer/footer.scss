@@ -11,6 +11,9 @@
         @include flexBox(space-around, center, row);
         padding-top: 2rem;
         padding-bottom: 3rem;
+        a {
+            color: #fff;
+        }
         h2 {
             font-family: $headingFont;
             span {
@@ -53,6 +56,8 @@
             input {
                 padding: .5rem;
                 width: 300px;
+                border-radius: 0;
+                border: 1px solid #333;
             }
             button {
                 display: block;

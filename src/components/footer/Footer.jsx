@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AiFillGithub, AiFillLinkedin , AiFillTwitterCircle} from 'react-icons/ai'
 import { BiMessageAltError, BiMessageAltCheck, BiLoader, BiWinkSmile } from 'react-icons/bi'
 import { database } from '../../firebase'
@@ -44,10 +45,10 @@ export default function Footer() {
   return (
     <footer className='footer flex-grow'>
       <div className="footer_container">
-        <div>
+        <Link to='/'>
           <h2>Quick<span>Shop</span></h2>
           <i>Get your favourite products...</i>
-        </div>
+        </Link>
         <form onSubmit={handleSubmit}>
           <p className="subscribe">Subscribe to our newsletter</p>
           {error && <p className='newsletter_error'>

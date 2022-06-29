@@ -55,9 +55,10 @@ export default function ForgotPassword() {
   return (
     <div className='login'>
       <h1>Password Reset</h1>
-      <p className='reset_desc'>You may need to check your spam folder.
-        If the link appears not to be clickable, you may need to copy the link and paste in your browser.
-      </p>
+      <div className='reset_desc'>
+        <p>You may need to check your spam folder.<br /> Also, If the link appears not to be clickable, 
+          you may need to copy the link and paste in your browser.</p>
+      </div>
       {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
       {message && <p className='alert message'> <GrStatusGood className='message_icon' style={{ color: '#fff'}} />  {message} </p>}
       <form onSubmit={handleSubmit}>

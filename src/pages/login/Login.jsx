@@ -50,11 +50,17 @@ export default function Login() {
               setError('')
           }, 3000)
         }
+        if (err.message === 'Firebase: Error (auth/network-request-failed).') {
+          setError('Please check your internet connection')
+          window.setTimeout(() => {
+            setError('')
+        }, 5000)
+        }
         if (err.message === 'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).') {
             setError('Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later')
             window.setTimeout(() => {
               setError('')
-          }, 15000)
+          }, 8000)
         }
     }
     setLoading(false)
