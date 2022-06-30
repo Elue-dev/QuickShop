@@ -37,6 +37,7 @@ export default function Products() {
             </div>
         ) 
     }
+    console.log(products)
 
   return (
     <>

@@ -8,7 +8,10 @@ import {
     sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signInWithPopup,
-    signOut
+    signOut,
+    updateEmail,
+    updatePassword,
+    updateProfile
  } from 'firebase/auth'
 
 const AuthContext = React.createContext()
@@ -41,9 +44,22 @@ export const AuthProvider = ({ children }) => {
         const googleAuthProvider = new GoogleAuthProvider()
         return signInWithPopup(auth, googleAuthProvider)
     }
+
     const facebookSignIn = () => {
         const facebookAuthProvider = new FacebookAuthProvider()
         return signInWithPopup(auth, facebookAuthProvider)
+    }
+
+    const updateName = (displayName) => {
+        updateProfile(auth.currentUser, {displayName: displayName})
+   }
+
+   const updateMail = (newmail) => {
+        updateEmail(auth.currentUser, newmail)
+    }
+
+    const updatePass = (password) => {
+        updatePassword(auth.currentUser, password)
     }
 
     useEffect(() => {
@@ -58,7 +74,8 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     const values = { user, signup, login, logout, 
-        resetPassword, googleSignIn, facebookSignIn
+        resetPassword, googleSignIn, facebookSignIn,
+        updateName, updateMail, updatePass
      }
 
     return (

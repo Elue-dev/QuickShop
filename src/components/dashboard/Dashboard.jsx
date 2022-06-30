@@ -42,8 +42,9 @@ export default function Dashboard() {
         <h1 className="heading">YOUR DASHBOARD</h1>
         <p className='dashboard_header'>
             <MdSpaceDashboard className='dashboard_icon' />
-            Welcome to your Dashboard, <b>{user.email}</b>
-        </p>
+            Welcome to your Dashboard, <b>{user.displayName || user.email}!</b>
+        </p><br />
+        <p>Your email: <b>{user.email}</b></p> Update this email? <Link to='/reset-email'><span style={{ color: '#bb5353'}}>Reset here</span></Link>
         <div className="wishlist_details">
             <div className='dashboard_wishlist'>
                 <p className='dash_wish'><BsHeart className='dash_icon' /> <b>Wishlist</b></p>

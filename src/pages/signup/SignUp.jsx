@@ -15,9 +15,10 @@ export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword]=  useState('')
+  const [displayName, setDisplayName]=  useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const { signup, googleSignIn, facebookSignIn } = useAuth()
+  const { signup, googleSignIn, facebookSignIn, updateName } = useAuth()
   const navigate = useNavigate()
   const [view, setView] = useState(false)
   const [view_, setView_] = useState(false)
@@ -47,6 +48,7 @@ export default function SignUp() {
       setError('')
       setLoading(true)
       await signup(email, password)
+      await updateName(displayName)
       setEmail('')
       setPassword('')
       setConfirmPassword('')
@@ -201,6 +203,16 @@ export default function SignUp() {
               {view_ ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
              </span>
         </label> <br />
+        <label>
+          <span>Full Name:</span> <br />
+            <input
+             type="text"
+             value={displayName}
+             onChange={(e)=>setDisplayName(e.target.value)} 
+             required 
+            />
+        </label> <br />
+
         <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
       </form>
       <p className='get_account'>

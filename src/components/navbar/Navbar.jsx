@@ -52,11 +52,12 @@ export default function Navbar() {
                 <span className='span_icon'>({cart.length})</span>
               </Link>
             </li>
+            {/* <Link to='/admin'>Admin</Link> */}
             <div className='user_auth' onClick={()=>setShowAuth(false)}>
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>
                 {user ? (
                   <div className='user_modal'>
-                    <p style={{ marginTop: '.4rem' }}>Hi, <b>{user.email}</b></p>
+                    <p style={{ marginTop: '.4rem' }}>Hi, <b>{user.displayName}</b></p>
                     <Link to='/dashboard' className='link_dashboard'> 
                       <MdSpaceDashboard />
                       View dashboard
