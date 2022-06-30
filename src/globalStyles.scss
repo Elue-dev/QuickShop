@@ -342,6 +342,9 @@ $bodyFont: 'Poppins', sans-serif;
     .footer .footer_container form button {
         padding: 0.4rem 0.6rem;
     }
+    .footer .footer_container form {
+        margin-top: -2rem;
+    }
 }
 
 @include mQ(380px) {
