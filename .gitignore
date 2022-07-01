@@ -3,7 +3,7 @@
 
 .env 
 
-src/components/admin
+/src/components/admin
 
 # dependencies
 /node_modules
