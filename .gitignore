@@ -3,7 +3,7 @@
 
 .env 
 
-/src/components/admin/Admin.jsx
+Admin.jsx
 
 # dependencies
 /node_modules
