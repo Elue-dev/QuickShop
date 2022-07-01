@@ -43,8 +43,14 @@
             padding: .5rem;
             width: 500px;
             font-size: 1rem;
+            border: 0;
+            border-bottom: 1px solid #333;
+            &:hover, &:focus {
+                border-color: $mainColor;
+            }
             @include mQ(420px) {
                 width: 100%;
+                border-radius: 0;
             }
         }
    }

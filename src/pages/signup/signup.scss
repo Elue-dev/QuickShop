@@ -16,46 +16,44 @@
         }
     }
     .oAuth_signin {
-        padding-bottom: 1rem;
         .oAuth__signin {
             background: rgb(226, 224, 224);
             color: $mainColor;
-            padding: .4rem 2rem;
+            padding: .4rem 1.3rem;
             border-radius: .3rem;
             border: 1px solid $mainColor;
             outline: 0;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             display: inline-block;
             width: 500px;
             @include flexBox(center, center, row);
             gap: .6rem;
-            margin-bottom: 1rem;
+            margin-bottom: .4rem;
             .google_icon {
-                font-size: 2rem;
+                font-size: 1.4rem;
             }
             .meta_icon {
-                font-size: 2rem;
+                font-size: 1.4rem;
                 color: #3388ff;
             }
         }
     }
     form {
-        line-height: 2;
         padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        font-size: 1.3rem;
+        padding-bottom: 1.2rem;
+        font-size: 1.1rem;
         label {
             span {
                 font-weight: 600;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
         }
         input {
             width: 500px;
             padding: .7rem;
-            margin-bottom: 1.7rem;
+            margin-bottom: 1.5rem;
             border: 0;
             border-bottom: 1px solid #333;
             outline: 0;

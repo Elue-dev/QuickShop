@@ -16,7 +16,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         const prodDetail = async () => {
-            const details = await fetch(process.env.REACT_APP_API +id)
+            const details = await fetch(process.env.REACT_APP_API + id)
             const detailsData = await details.json()
             setItem(detailsData)
         }

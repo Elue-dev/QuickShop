@@ -3,6 +3,8 @@
 
 .env 
 
+/admin
+
 # dependencies
 /node_modules
 /.pnp

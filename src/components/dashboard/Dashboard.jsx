@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import './dashboard.scss'
 
 export default function Dashboard() {
-    const { user, logout } = useAuth()
+    const { user, currentUser, logout } = useAuth()
     const { state: { cart, wishlist } } = useStore()
     const [error, setError] = useState(null)
     const navigate = useNavigate()
@@ -44,7 +44,11 @@ export default function Dashboard() {
             <MdSpaceDashboard className='dashboard_icon' />
             Welcome to your Dashboard, <b>{user.displayName || user.email}!</b>
         </p><br />
-        <p>Your email: <b>{user.email}</b></p> Update this email? <Link to='/reset-email'><span style={{ color: '#bb5353'}}>Reset here</span></Link>
+        <p>Your email: <b>{user.email}</b></p> 
+         Update this email?
+          <Link to='/reset-email'><span style={{ color: '#bb5353', marginLeft: '.3rem'}}>
+            Reset here</span>
+        </Link>
         <div className="wishlist_details">
             <div className='dashboard_wishlist'>
                 <p className='dash_wish'><BsHeart className='dash_icon' /> <b>Wishlist</b></p>
@@ -56,7 +60,7 @@ export default function Dashboard() {
             </div>
              {wishlist.length ? (
                 <div className='dashboard_products'>
-                    <p className='prod_details'>They include:</p>
+                    <p className='prod_details'>{wishlist.length === 1 ? 'It includes': 'They include'}:</p>
                     <div>
                         {wishlist.map(product => (
                             <li key={product.id}>{product.name}</li>

@@ -156,7 +156,6 @@ export default function SignUp() {
   return (
     <div className='signup'>
       <h1>Create Account</h1>
-      {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
       <div className="oAuth_signin">
         <button onClick={handleGoogleSignIn} className="btn oAuth__signin">
           <div><FcGoogle className='google_icon' /></div>
@@ -167,8 +166,17 @@ export default function SignUp() {
           <div>Continue with facebook</div>
         </button>
       </div>
-     0R
+      {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
       <form onSubmit={handleSubmit}>
+      <label>
+          <span>Full Name:</span> <br />
+            <input
+             type="text"
+             value={displayName}
+             onChange={(e)=>setDisplayName(e.target.value)} 
+             required 
+            />
+        </label> <br />
         <label>
           <span>Email:</span> <br />
             <input
@@ -203,16 +211,6 @@ export default function SignUp() {
               {view_ ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
              </span>
         </label> <br />
-        <label>
-          <span>Full Name:</span> <br />
-            <input
-             type="text"
-             value={displayName}
-             onChange={(e)=>setDisplayName(e.target.value)} 
-             required 
-            />
-        </label> <br />
-
         <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
       </form>
       <p className='get_account'>

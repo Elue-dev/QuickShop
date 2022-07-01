@@ -13,7 +13,7 @@ import WishList from './pages/wishlist/WishList';
 import Error404 from './pages/error404/Error404'
 import Dashboard from './components/dashboard/Dashboard';
 import Admin from './components/admin/Admin';
-import Update from './pages/name/Update';
+import UpdateEmail from './pages/update_email/UpdateEmail';
 
 function App() {
   return (
@@ -27,8 +27,9 @@ function App() {
             <Route path='/product/:id' element={<ProductDetails />} />
             <Route path='/checkout' element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path='/login' element={<Login />} />
+            <Route path='/admin' element={<Admin />} />
             <Route path='/signup' element={<SignUp />} />
-            <Route path ='/reset-email' element ={<Update />} />
+            <Route path ='/reset-email' element ={<UpdateEmail />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path='*' element={<Error404 />} />

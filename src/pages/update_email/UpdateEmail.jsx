@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { BiLoader } from 'react-icons/bi'
 import { GrStatusGood } from 'react-icons/gr'
-import  './update.scss'
+import  './updateEmail.scss'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -31,6 +31,7 @@ export default function Update() {
           setLoading(true)
           await updateMail(email)
           setLoading(false)
+          setEmail('')
           setMessage('Your email has been successfully changed.')
           window.setTimeout(() => {
             setMessage('REDIRECTING...')
@@ -64,7 +65,7 @@ export default function Update() {
              placeholder='Enter new email'
              required 
             />
-        </label>
+        </label><br />
         <button type='submit'>{loading ? <BiLoader /> : 'Proceed'}</button>
     </form>
   )
