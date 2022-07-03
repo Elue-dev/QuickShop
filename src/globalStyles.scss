@@ -239,7 +239,7 @@ $bodyFont: 'Poppins', sans-serif;
     }
     .login form label span, .signup form label span {
         font-weight: 500;
-        font-size: 1rem;
+        font-size: .9rem;
     }
     .login form input, .signup form input {
         padding: 0.5rem;
@@ -352,6 +352,9 @@ $bodyFont: 'Poppins', sans-serif;
     .footer .footer_container a {
         color: #fff;
         padding-bottom: 2rem;
+    }
+    .signup .indicator {
+        font-size: .9rem;
     }
 }
 

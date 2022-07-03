@@ -5,6 +5,7 @@
     @include flexBox(center, center, column);
     h1 {
         font-family: $headingFont;
+        padding-top: 3rem;
     }
     .update_desc {
         @include wrapper();

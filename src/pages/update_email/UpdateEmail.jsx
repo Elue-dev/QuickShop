@@ -49,7 +49,7 @@ export default function Update() {
     <form onSubmit={handle} className='form'>
         <h1 className='update'>Update Email</h1><br />
         <div className='update_desc'>
-        <p>Remember to provide a different email from the one you used to register.</p>
+        <p>A confirmation email will be sent to you after you update your email (Ensure to check your spam folder)</p>
       </div>
       {error && <p className='alert error update_error'>
          <MdOutlineReportGmailerrorred className='error_icon' />

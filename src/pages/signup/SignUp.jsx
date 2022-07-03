@@ -208,7 +208,7 @@ export default function SignUp() {
              </span>
         </label> <br />
         <div className={passFocus ? 'indicator show' : 'indicator'}>
-          <span>Password strength indicator</span>
+          <span>Password must include:</span>
             <ul>
                   <li className={caseCondition ? 'green' : 'red'}>
                   {caseCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
@@ -229,7 +229,7 @@ export default function SignUp() {
               </ul>
         </div>
         {passwordComplete && <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button> }
-        {!passwordComplete && <button className='btn disabled'>Continue</button> }
+        {!passwordComplete && <button disabled className='btn disabled'>Continue</button> }
       </form>
       <p className='get_account'>
         Have a Quick<span>Shop</span> account? <Link to='/login'>Login</Link>
