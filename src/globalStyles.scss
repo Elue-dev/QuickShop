@@ -35,10 +35,14 @@ $bodyFont: 'Poppins', sans-serif;
     margin-bottom: 1rem;
 }
 .error {
-    background: crimson;
+    background: pink;
+    color: red;
+    border: 1px solid red;
 }
 .message {
-    background: rgb(125, 194, 22);
+    background: rgb(183, 215, 136);
+    color: green;
+    border: 1px solid rgb(2, 69, 2);
 }
 .page_desc {
     padding-top: 1rem;
@@ -344,6 +348,10 @@ $bodyFont: 'Poppins', sans-serif;
     }
     .footer .footer_container form {
         margin-top: -2rem;
+    }
+    .footer .footer_container a {
+        color: #fff;
+        padding-bottom: 2rem;
     }
 }
 

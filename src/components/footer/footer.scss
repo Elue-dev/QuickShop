@@ -27,8 +27,9 @@
                 font-size: 1.2rem;
             }
             .newsletter_error {
-                background: crimson;
-                color: #fff;
+                background: pink;
+                color: red;
+                border: 1px solid red;
                 padding: .2rem .6rem;
                 @include flexBox(center, center, row);
                 gap: .4rem;
@@ -37,8 +38,9 @@
                 width: 300px;
             }
             .newsletter_message {
-                background-color: rgb(23, 190, 23);
-                color: #fff;
+                background: rgb(183, 215, 136);
+                color: green;
+                border: 1px solid rgb(2, 69, 2);
                 padding: .2rem .6rem;
                 @include flexBox(center, center, row);
                 text-align: left;

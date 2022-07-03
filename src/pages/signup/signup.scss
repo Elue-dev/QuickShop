@@ -80,6 +80,21 @@
             cursor: pointer;
             width: 100%;
         }
+        li {
+            list-style: none;
+        }
+        .indicator {
+            background: rgb(244, 244, 244);
+            color: #333;
+            padding: .7rem;
+            margin-bottom: 1rem;
+            display: none;
+            transition: display .2s ease;
+            span {
+                color: #000;
+                font-weight: 700;
+            }
+        }
     }
     .forgot_password {
         padding-bottom: 1rem;
@@ -96,5 +111,20 @@
             color: $mainColor;
             text-decoration: underline;
         }
+    }
+    .red {
+        color: red;
+        transition: .05s ease-in;
+    }
+    .green {
+        color: green;
+        transition: .05s ease-in;
+    }
+    .btn.disabled {
+        cursor: not-allowed;
+        opacity: .7;
+    }
+    .indicator.show {
+        display: block;
     }
 }

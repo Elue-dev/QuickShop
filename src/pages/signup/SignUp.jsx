@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
@@ -7,6 +7,8 @@ import { BiLoader } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 import { IoIosEye, IoMdEyeOff } from 'react-icons/io'
+import { ImCheckmark } from 'react-icons/im'
+import { GoPrimitiveDot } from 'react-icons/go'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './signup.scss'
@@ -14,35 +16,22 @@ import './signup.scss'
 export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword]=  useState('')
   const [displayName, setDisplayName]=  useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const { signup, googleSignIn, facebookSignIn, updateName } = useAuth()
   const navigate = useNavigate()
   const [view, setView] = useState(false)
-  const [view_, setView_] = useState(false)
-  const confirmPasswordRef = useRef(null)
   const passwordRef = useRef(null)
+  const [caseCondition, setCaseCondition] = useState(false)
+  const [numberCondition, setNumberCondition] = useState(false)
+  const [charCondition, setCharCondition] = useState(false)
+  const [lengthCondition, setLengthCondition] = useState(false)
+  const [passwordComplete, setPasswordComplete] = useState(false)
+  const [passFocus, setPassFocus] = useState(false)
 
   const handleSubmit = async e => {
     e.preventDefault()
-
-    if (password !== confirmPassword) {
-        setError('Passwords do not match')
-        window.setTimeout(() => {
-          setError('')
-         }, 3000)
-      return
-    }
-
-    if (password.length > 9) {
-      setError('Password must be between 6-9 characters')
-      window.setTimeout(() => {
-       setError('')
-      }, 3000)
-      return
-    }
 
     try {
       setError('')
@@ -51,7 +40,6 @@ export default function SignUp() {
       await updateName(displayName)
       setEmail('')
       setPassword('')
-      setConfirmPassword('')
       toast.success('Successfully signed up', {
         autoClose: 5000, 
         pauseOnFocusLoss: false
@@ -144,14 +132,34 @@ export default function SignUp() {
     }
   }
 
-  const handleShowConfirmPassword = () => {
-    setView_(!view_)
-    if (confirmPasswordRef.current.type === 'password') {
-      confirmPasswordRef.current.setAttribute('type', 'text')
+  useEffect(() => {
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+        setCaseCondition(true)
     } else {
-      confirmPasswordRef.current.setAttribute('type', 'password')
+        setCaseCondition(false)
     }
-  }
+    if (password.match(/([0-9])/)) {
+        setNumberCondition(true)
+    } else {
+        setNumberCondition(false)
+    }
+    if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+        setCharCondition(true)
+    } else {
+        setCharCondition(false)
+    }
+    if (password.length > 7) {
+        setLengthCondition(true)
+    } else {
+        setLengthCondition(false)
+    }
+
+    if (caseCondition && numberCondition && charCondition && lengthCondition) {
+        setPasswordComplete(true)
+    } else {
+        setPasswordComplete(false)
+    }
+}, [password, caseCondition, numberCondition, charCondition, lengthCondition, passwordComplete])
 
   return (
     <div className='signup'>
@@ -191,6 +199,7 @@ export default function SignUp() {
             <input type="password"
              value={password} 
              onChange={(e)=>setPassword(e.target.value)}
+             onFocus={()=>setPassFocus(true)}
              required 
              ref={passwordRef}
              placeholder='At least 6 characters' />
@@ -198,20 +207,29 @@ export default function SignUp() {
               {view ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
              </span>
         </label> <br />
-        <label>
-          <span>Re-enter Password:</span> <br />
-            <input
-             type="password"
-             value={confirmPassword}
-             ref={confirmPasswordRef}
-             onChange={(e)=>setConfirmPassword(e.target.value)}
-             required
-             />
-             <span className='eye' onClick={handleShowConfirmPassword}>
-              {view_ ? ( <IoIosEye />)  : (<IoMdEyeOff />)}
-             </span>
-        </label> <br />
-        <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button>
+        <div className={passFocus ? 'indicator show' : 'indicator'}>
+          <span>Password strength indicator</span>
+            <ul>
+                  <li className={caseCondition ? 'green' : 'red'}>
+                  {caseCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; Lowercase & Uppercase
+                  </li>
+                  <li className={numberCondition ? 'green' : 'red'}>
+                      {numberCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; Numbers [0-9]
+                  </li>
+                  <li className={charCondition ? 'green' : 'red'}>
+                  {charCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; Special Characters (!@#$%^&*)
+                  </li>
+                  <li className={lengthCondition ? 'green' : 'red'}>
+                  {lengthCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; At least 8 characters
+                  </li>
+              </ul>
+        </div>
+        {passwordComplete && <button className='btn'>{loading ? <BiLoader /> : 'Continue'}</button> }
+        {!passwordComplete && <button className='btn disabled'>Continue</button> }
       </form>
       <p className='get_account'>
         Have a Quick<span>Shop</span> account? <Link to='/login'>Login</Link>
