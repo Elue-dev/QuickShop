@@ -1,18 +1,20 @@
+import { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import { BsFillHeartFill } from 'react-icons/bs'
 import { ImCart } from 'react-icons/im'
-import { MdSpaceDashboard } from 'react-icons/md'
+import { MdSpaceDashboard, MdOutlineLightMode, MdLightMode } from 'react-icons/md'
 import { GrFormClose } from 'react-icons/gr'
 import { useStore } from '../../contexts/StoreContext'
-import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
+import { ModeContext } from '../../contexts/ModeContext'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './navbar.scss'
 
 export default function Navbar() {
   const { state: { cart, wishlist } } = useStore()
+   const { mode , changeMode } = useContext(ModeContext)
   const [showAuth, setShowAuth] = useState(false)
   const [error, setError] = useState(null)
   
@@ -35,8 +37,8 @@ export default function Navbar() {
     }
 
   return (
-    <nav>
-      <div className="navbar">
+    <nav className={`nav ${mode}`}>
+      <div className={`navbar ${mode}`}>
         <Link to='/' className='logo'><p>Quick<span>Shop</span></p></Link>
           <ul className='nav_links'>
             <li>
@@ -52,18 +54,31 @@ export default function Navbar() {
                 <span className='span_icon'>({cart.length})</span>
               </Link>
             </li>
-            {/* <Link to='/admin'>Admin</Link> */}
+            <li className='change_mode'>
+              {mode === 'light' ? (
+                <MdLightMode
+                className='mode_icon'
+                onClick={()=>changeMode('dark')}
+               />
+              ) : (
+                <MdOutlineLightMode 
+                className='mode_icon'
+                // style={{ filter: 'invert(100%)' }}
+                onClick={()=>changeMode('light')}
+               />
+              )}
+            </li>
             <div className='user_auth' onClick={()=>setShowAuth(false)}>
               <div className={showAuth ? 'auth_links show' : 'auth_links'}>
                 {user ? (
-                  <div className='user_modal'>
+                  <div className='username'>
                     <p style={{ marginTop: '.4rem' }}>Hi, <b>{user.displayName}</b></p>
                     <Link to='/dashboard' className='link_dashboard'> 
                       <MdSpaceDashboard />
                       View dashboard
                     </Link> <br /><br />
                     <p className='logout' onClick={handleLogout}>Logout</p>
-                    <p><GrFormClose className='close_popup' /></p>
+                    <p className='close'><GrFormClose className='close_popup' /></p>
                   </div>
                 ) : (
                   <div className='user_modal'>

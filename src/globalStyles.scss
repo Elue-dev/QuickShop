@@ -28,7 +28,7 @@ $bodyFont: 'Poppins', sans-serif;
 
 .alert {
     color: #fff;
-    padding: .5rem;
+    padding: .1rem;
     width: 500px;
     text-align: left;
     font-weight: 700;
@@ -42,7 +42,7 @@ $bodyFont: 'Poppins', sans-serif;
 .message {
     background: rgb(183, 215, 136);
     color: green;
-    border: 1px solid rgb(2, 69, 2);
+    border: 1px solid green;
 }
 .page_desc {
     padding-top: 1rem;
@@ -157,6 +157,7 @@ $bodyFont: 'Poppins', sans-serif;
     }
     .home .hero {
         height: 40vh;
+        background-position: center;
     }
     .home .hero .hero_text {
         font-size: 1rem;
@@ -246,6 +247,7 @@ $bodyFont: 'Poppins', sans-serif;
         font-size: 1rem;
         border-radius: .5rem;
         margin-bottom: 1.5rem;
+        border-radius: 0;
     }
     .login form .btn, .signup form .btn {
         padding: 0.5rem 2rem;
@@ -355,6 +357,9 @@ $bodyFont: 'Poppins', sans-serif;
     }
     .signup .indicator {
         font-size: .9rem;
+    }
+    .home .products_section span {
+        font-size: 1rem;
     }
 }
 

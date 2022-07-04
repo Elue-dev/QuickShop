@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
@@ -12,6 +12,7 @@ import { GoPrimitiveDot } from 'react-icons/go'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './signup.scss'
+import { ModeContext } from '../../contexts/ModeContext'
 
 export default function SignUp() {
   const [email, setEmail] = useState('')
@@ -29,6 +30,7 @@ export default function SignUp() {
   const [lengthCondition, setLengthCondition] = useState(false)
   const [passwordComplete, setPasswordComplete] = useState(false)
   const [passFocus, setPassFocus] = useState(false)
+  const { mode } = useContext(ModeContext)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -148,7 +150,7 @@ export default function SignUp() {
     } else {
         setCharCondition(false)
     }
-    if (password.length > 7) {
+    if (password.length > 5 && password.length <= 12 ) {
         setLengthCondition(true)
     } else {
         setLengthCondition(false)
@@ -167,17 +169,17 @@ export default function SignUp() {
       <div className="oAuth_signin">
         <button onClick={handleGoogleSignIn} className="btn oAuth__signin">
           <div><FcGoogle className='google_icon' /></div>
-          <div>Continue with google</div>
+          <div className={`google ${mode}`}>Continue with google</div>
         </button>
         <button onClick={handleFacebookSignIn} className="btn oAuth__signin">
           <div><FaFacebook className='meta_icon' /></div>
-          <div>Continue with facebook</div>
+          <div className={`facebook ${mode}`}>Continue with facebook</div>
         </button>
       </div>
       {error && <p className='alert error'> <MdOutlineReportGmailerrorred className='error_icon' />  {error} </p>}
       <form onSubmit={handleSubmit}>
       <label>
-          <span>Full Name:</span> <br />
+          <span>Name:</span> <br />
             <input
              type="text"
              value={displayName}
@@ -211,20 +213,20 @@ export default function SignUp() {
           <span>Password must include:</span>
             <ul>
                   <li className={caseCondition ? 'green' : 'red'}>
-                  {caseCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
-                      &nbsp; Lowercase & Uppercase
+                      {caseCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; Uppercase & lowercase letters
+                  </li>
+                  <li className={lengthCondition ? 'green' : 'red'}>
+                      {lengthCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; 6-12 characters
                   </li>
                   <li className={numberCondition ? 'green' : 'red'}>
                       {numberCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
-                      &nbsp; Numbers [0-9]
+                      &nbsp; At least a number
                   </li>
                   <li className={charCondition ? 'green' : 'red'}>
-                  {charCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
-                      &nbsp; Special Characters (!@#$%^&*)
-                  </li>
-                  <li className={lengthCondition ? 'green' : 'red'}>
-                  {lengthCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
-                      &nbsp; At least 8 characters
+                      {charCondition ? <ImCheckmark /> : <GoPrimitiveDot />}
+                      &nbsp; At least one special character (!@#$%^&*)
                   </li>
               </ul>
         </div>

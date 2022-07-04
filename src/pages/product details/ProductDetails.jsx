@@ -81,6 +81,7 @@ export default function ProductDetails() {
             <div className="details_texts">
                 <p className='detail_name'>{item.name}</p>
                 <p>{item.description}.</p>
+                <p><b>Product brand: </b>{item.brand}</p>
                 <p className='detail_price'>
                     <span>NGN {item.price}</span>
                     <span>NGN {item.price - 349}</span>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useStore } from "../../contexts/StoreContext"
 import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
+import { HiOutlineEmojiSad } from 'react-icons/hi'
 import { FaRegEye } from 'react-icons/fa'
 import { BiLoader } from 'react-icons/bi'
 import { Link } from "react-router-dom"
@@ -11,6 +12,7 @@ export default function Products() {
 
     const { state: { cart }, products, setProducts, addToCart } = useStore()
     const [term, setTerm] = useState('')
+    const [filteredProducts, setFilteredProducts] = useState([])
 
     useEffect(() => {
         const getProducts = async () => {
@@ -20,7 +22,11 @@ export default function Products() {
         }
 
         getProducts()
-    }, [])
+
+        setFilteredProducts(
+            products.filter(prod => prod.name.toLowerCase().includes(term.toLowerCase()))
+        )
+    }, [term, products])
 
     const handleAddToCart = (product) => {
         addToCart(product)
@@ -37,10 +43,9 @@ export default function Products() {
             </div>
         ) 
     }
-    console.log(products)
 
   return (
-    <>
+    <div className="products_section">
        <div className="input">
         <input type="search"
          value={term} 
@@ -51,14 +56,13 @@ export default function Products() {
        </div>
         <h1 className="heading">PRODUCTS</h1>
        {term &&  <p className="search_filter">Products including <i>'{term}'</i></p>}
+       {filteredProducts.length === 0 && 
+        <span>
+                <HiOutlineEmojiSad className="sad_icon" />
+                &nbsp; No products matches your search
+            </span>}
         <div className="products_data">
-            { products && products.filter(val => {
-                if (term === '') {
-                    return val
-                } else if (val.name.toLowerCase().includes(term.toLowerCase())) {
-                    return val
-                } 
-            }).map(product => (
+            {filteredProducts?.map(product => (
                 <div className="products_card" key={product.id}>
                     <div className="products_details">
                         <div className="items_icon">
@@ -90,6 +94,6 @@ export default function Products() {
                 </div>
             ))}
         </div>
-    </>
+    </div>
   )
 }

@@ -48,6 +48,9 @@ img {
             :nth-child(2) {
                 line-height: 1.8;
             }
+            b {
+                color: $mainColor;
+            }
             .detail_price {
                 color: $mainColor;
                 padding-top: 1rem;

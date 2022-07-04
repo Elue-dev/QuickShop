@@ -5,8 +5,6 @@ import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { BiLoader } from 'react-icons/bi'
 import { GrStatusGood } from 'react-icons/gr'
 import  './updateEmail.scss'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 export default function Update() {
     const { updateMail, updatePass, user } = useAuth()
@@ -65,7 +63,7 @@ export default function Update() {
              placeholder='Enter new email'
              required 
             />
-        </label><br />
+        </label>
         <button type='submit'>{loading ? <BiLoader /> : 'Proceed'}</button>
     </form>
   )

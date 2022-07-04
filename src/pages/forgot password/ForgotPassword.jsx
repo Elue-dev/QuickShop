@@ -1,10 +1,9 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { GrStatusGood } from 'react-icons/gr'
 import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { useAuth } from '../../contexts/AuthContext'
 import './forgotPassword.scss'
-import { useEffect } from 'react'
 
 export default function ForgotPassword() {
   const emailRef = useRef(null)
@@ -54,7 +53,7 @@ export default function ForgotPassword() {
       }
     }
   }
-
+  
   return (
     <div className='login'>
       <h1>Password Reset</h1>

@@ -5,12 +5,15 @@ import { BiMessageAltError, BiMessageAltCheck, BiLoader, BiWinkSmile } from 'rea
 import { database } from '../../firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import './footer.scss'
+import { useContext } from 'react'
+import { ModeContext } from '../../contexts/ModeContext'
 
 export default function Footer() {
   const [mail, setMail] = useState('')
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const { mode } = useContext(ModeContext)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -31,8 +34,8 @@ export default function Footer() {
         mail,
         time: serverTimestamp()
       })
-      setLoading(false)
       setMessage('You successfully registered to our newsletter!')
+      setLoading(false)
       window.setTimeout(() => {
         setMessage('')
     }, 4000)
@@ -43,7 +46,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className='footer flex-grow'>
+    <footer className={`footer ${mode} `}>
       <div className="footer_container">
         <Link to='/'>
           <h2>Quick<span>Shop</span></h2>

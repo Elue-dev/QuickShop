@@ -43,6 +43,11 @@ nav {
                     position: relative;
                 }
             }
+            .mode_icon {
+                font-size: 1.7rem;
+                cursor: pointer;
+                margin-left: .5rem;
+            }
         }
         .count {
             background: $mainColor;
@@ -51,19 +56,19 @@ nav {
             border-radius: 50%;
             position: relative;
         }
-        // .cart, .wishlist {
-        //     margin-right: 2.9rem;
-        // }
-        // .cart_count {
-        //     right: 50px;
-        //     top: -20px;
-        // }
         .wishlist_count {
             right: 108px;
             top: -20px;
         }
         .user {
             position: relative;
+        }
+        .close_popup {
+            position: absolute;
+            top: 0.2rem;
+            right: 0;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         .user_auth {
             position: absolute;
@@ -114,5 +119,24 @@ nav {
                 display: block;
             }
         }
+    }
+}
+
+.nav.dark {
+    background: #111;
+    color: #fff;
+    .logo {
+        p {
+            color: #fff;
+        }
+    }
+    .username {
+        color: #333;
+    }
+}
+.navbar.dark {
+    color: #fff;
+    a {
+        color: #fff;
     }
 }

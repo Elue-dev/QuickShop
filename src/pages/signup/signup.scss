@@ -39,6 +39,9 @@
                 color: #3388ff;
             }
         }
+        .google.dark, .facebook.dark {
+            color: $mainColor;
+        }
     }
     form {
         padding-top: 1.5rem;

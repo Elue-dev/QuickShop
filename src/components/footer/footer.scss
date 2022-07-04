@@ -1,7 +1,7 @@
 @import '../../globalStyles.scss';
 
 .footer {
-    background: #333;
+    background: #222;
     color: #fff;
     font-weight: 600;
     margin-top: 4rem;
@@ -97,4 +97,8 @@
     .line {
         @include wrapper();
     }
+}
+
+.footer.dark {
+    background: #111;
 }

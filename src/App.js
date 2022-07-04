@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ModeContext } from './contexts/ModeContext';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import Cart from './pages/cart/Cart';
@@ -15,10 +17,12 @@ import Dashboard from './components/dashboard/Dashboard';
 import UpdateEmail from './pages/update_email/UpdateEmail';
 
 function App() {
+  const { mode } = useContext(ModeContext)
+
   return (
     <Router>
       <Navbar />
-        <div className="App">
+        <div className={`App ${mode}`}>
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/cart' element={<Cart />} />
@@ -27,7 +31,7 @@ function App() {
             <Route path='/checkout' element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
-            <Route path ='/reset-email' element ={<UpdateEmail />} />
+            <Route path ='/reset-email' element ={<ProtectedRoute><UpdateEmail /></ProtectedRoute>} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path='*' element={<Error404 />} />

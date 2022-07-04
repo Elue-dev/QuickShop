@@ -1,5 +1,5 @@
 import './home.scss'
-import heroImage from '../../assets/ecomm.webp'
+import heroImage from '../../assets/shop.png'
 import Products from './Products'
 
 export default function Home() {
