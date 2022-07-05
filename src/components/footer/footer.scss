@@ -11,6 +11,9 @@
         @include flexBox(space-around, center, row);
         padding-top: 2rem;
         padding-bottom: 3rem;
+        @include mQ(420px) {
+            flex-direction: column;
+        }
         a {
             color: #fff;
         }

@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import './dashboard.scss'
 
 export default function Dashboard() {
-    const { user, currentUser, logout } = useAuth()
+    const { user, logout } = useAuth()
     const { state: { cart, wishlist } } = useStore()
     const [error, setError] = useState(null)
     const navigate = useNavigate()

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlineReportGmailerrorred } from 'react-icons/md'
 import { BiLoader } from 'react-icons/bi'
@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useAuth } from '../../contexts/AuthContext'
 import './login.scss'
-import { useEffect } from 'react'
 
 export default function Login() {
   const emailRef = useRef(null)

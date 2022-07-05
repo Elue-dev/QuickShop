@@ -73,7 +73,7 @@ export default function Footer() {
         <div className="social_icons">
           <ul>
             <li><a href='https://github.com/Elue-Dev'><AiFillGithub /></a></li>
-            <li><a href='https://www.linkedin.com/in/elue-wisdom-dubem-8822a5188'><AiFillLinkedin /></a></li>
+            <li><a href='https://www.linkedin.com/in/wisdom-elue-8822a5188'><AiFillLinkedin /></a></li>
             <li><a href='https://twitter.com/eluewisdom_'><AiFillTwitterCircle /></a></li>
           </ul>
         </div>

@@ -4,7 +4,7 @@ import  './error404.scss'
 
 export default function Error404() {
   return (
-    <div  className='error_page'>
+    <div className='error_page'>
         <p className="error_icon"><HiOutlineEmojiSad /></p>
         <p className='error_top' >SORRY</p>
         <p className='error_desc'>We couldn't find that page</p>

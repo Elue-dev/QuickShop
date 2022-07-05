@@ -76,7 +76,7 @@ export default function Cart() {
                     <div className='cart_price'><b>NGN</b> {item.price - 349}</div>
                     <div>
                         <b>Quantity:</b>
-                        <select
+                        &nbsp; <select
                             type="number" 
                             onChange={(e)=>dispatch({
                             type: 'CHANGE_QTY',

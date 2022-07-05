@@ -53,6 +53,12 @@ $bodyFont: 'Poppins', sans-serif;
          color: $mainColor;
      }
  }
+ .App.dark .error {
+    color: red;
+ }
+ .App.dark .message {
+    color: green;
+ }
 
 @include mQ(1280px) {
     .product_details {
