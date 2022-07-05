@@ -12,7 +12,7 @@ import ProtectedRoute from '../components/protected route/ProtectedRoute'
 import Error404 from '../pages/error404/Error404'
 import Dashboard from '../components/dashboard/Dashboard'
 
-export default function AnimatedRoutes() {
+export default function AllRoutes() {
   return (
          <Routes>
             <Route exact path='/' element={<Home />} />

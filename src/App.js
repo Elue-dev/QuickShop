@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import AllRoutes from './components/AllRoutes';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
@@ -9,11 +9,11 @@ function App() {
   const { mode } = useContext(ModeContext)
   return (
     <div className={`App ${mode}`}>
-      <Router>
+      <BrowserRouter>
         <Navbar />
           <AllRoutes />
         <Footer />
-      </Router>
+      </BrowserRouter>
     </div>
     
   );
