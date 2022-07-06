@@ -32,7 +32,8 @@ export default function Products() {
         addToCart(product)
         toast.success(`${product.name} added to your cart`, {
             autoClose: 4000, 
-            pauseOnFocusLoss: false
+            pauseOnFocusLoss: false,
+            position: toast.POSITION.TOP_LEFT
         })
     }
 

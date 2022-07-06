@@ -8,7 +8,7 @@ import { GrFormClose } from 'react-icons/gr'
 import { useStore } from '../../contexts/StoreContext'
 import { useAuth } from '../../contexts/AuthContext'
 import { ModeContext } from '../../contexts/ModeContext'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast, ToastContainer, style } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './navbar.scss'
 
@@ -29,7 +29,7 @@ export default function Navbar() {
             navigate('/')
             toast.success(`Successfully logged out ${user.email}`, {
               autoClose: 4000, 
-              pauseOnFocusLoss: false
+              pauseOnFocusLoss: false,
             })
         }  catch(err) {
             setError(err.messsge)
@@ -92,7 +92,7 @@ export default function Navbar() {
           </ul>
       </div>
       {error && <p className='error'>{error}</p>}
-      <ToastContainer />
+      <ToastContainer toastStyle={{ backgroundColor: "#bb5353", color: '#fff' }} />
     </nav>
   )
 }

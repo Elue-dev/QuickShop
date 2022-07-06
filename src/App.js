@@ -7,6 +7,7 @@ import { ModeContext } from './contexts/ModeContext'
 
 function App() {
   const { mode } = useContext(ModeContext)
+  
   return (
     <div className={`App ${mode}`}>
       <BrowserRouter>

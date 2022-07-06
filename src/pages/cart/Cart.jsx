@@ -26,7 +26,8 @@ export default function Cart() {
         removeFromCart(product)
         toast.success(`${product.name} was removed from your cart`, {
             autoClose: 4000, 
-            pauseOnFocusLoss: false
+            pauseOnFocusLoss: false,
+            position: toast.POSITION.TOP_LEFT
         })
     }
 
@@ -34,7 +35,8 @@ export default function Cart() {
         clearCart()
         toast.success('Cart cleared', {
             autoClose: 4000, 
-            pauseOnFocusLoss: false
+            pauseOnFocusLoss: false,
+            position: toast.POSITION.TOP_LEFT
         })
     }
 
