@@ -109,3 +109,9 @@ a {
 .App.dark .footer {
   background: #111;
 }
+.App.dark .nav.dark .username p {
+  color: #333;
+}
+.App.dark .nav.dark .username .logout {
+  color: #fff;
+}
